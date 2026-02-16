@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { MessageCircle, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
 
-const FloatingContact = ({ phone = "+91 98765 43210", whatsappText = "Hello%20Luxe%20Interiors" }) => {
+const FloatingContact = ({ phone = "+91 1234567890", whatsappText = "Hello%20Luxe%20Interiors" }) => {
   const [hidden, setHidden] = useState(false);
   const { pathname } = useLocation();
 

@@ -45,7 +45,7 @@ const Hero = () => {
       className="relative h-[100dvh] w-full bg-[#0A0A0A] flex flex-col overflow-hidden font-sans"
     >
       {/* 1. Main Viewport */}
-      <div id="hero-viewport" className="relative flex-grow overflow-hidden touch-none">
+      <div id="hero-viewport" className="relative flex-grow overflow-hidden touch-auto">
         <AnimatePresence mode="wait">
           <motion.div 
             key={activeProject.id}

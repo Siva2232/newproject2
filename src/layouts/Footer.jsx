@@ -151,7 +151,7 @@ const Footer = () => {
               <p className="text-black text-lg font-serif italic mb-2 hover:text-[#C5A059] transition-colors cursor-pointer">
                 hello@hometech.studio
               </p>
-              <p className="text-gray-400 text-sm font-light tracking-wide">+91 98765 43210</p>
+              <p className="text-gray-400 text-sm font-light tracking-wide">+91 1234567890</p>
             </div>
           </div>
         </div>

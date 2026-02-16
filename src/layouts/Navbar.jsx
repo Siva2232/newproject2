@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react"; 
+import { X, Instagram, Twitter, Linkedin, Facebook } from "lucide-react";
 import useNavbarScroll from "../hooks/useNavbarScroll";
 import servicesData from "../data/servicesData";
 import productsData from "../data/productsData";
@@ -29,11 +29,12 @@ const Navbar = () => {
   }, [isOpen]);
 
   const navLinks = [
-    { name: "Projects", path: "/projects", id: "01" },
-    { name: "Services", path: "/services", id: "02" },
-    { name: "Gallery", path: "/gallery", id: "03" },
-    { name: "Contact us", path: "/contact", id: "04" },
+    { name: "Home", path: "/", id: "01" },
+    { name: "Projects", path: "/projects", id: "02" },
+    { name: "Services", path: "/services", id: "03" },
+    { name: "Gallery", path: "/gallery", id: "04" },
     { name: "Our Story", path: "/about", id: "05" },
+    { name: "Contact us", path: "/contact", id: "06" },
   ];
 
   return (
@@ -47,6 +48,7 @@ const Navbar = () => {
           className={`
             relative flex items-center justify-between px-6 md:px-10 pointer-events-auto
             transition-all duration-700 ease-in-out
+            ${isOpen ? "opacity-0 pointer-events-none" : ""}
             ${scrolled 
               ? "w-[95%] md:w-[90%] lg:w-[85%] bg-[#00162E]/80 backdrop-blur-2xl border border-[#C5A059]/20 py-2.5 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)]" 
               : "w-full bg-transparent py-4 border-transparent"}
@@ -64,6 +66,10 @@ const Navbar = () => {
               <h1 className="font-serif text-white text-base md:text-lg leading-none tracking-tighter uppercase">
                 Home Tech <span className="italic font-light opacity-60 text-[#C5A059]">Solutions</span>
               </h1>
+              <span className="text-[8px] uppercase tracking-[0.3em] text-[#C5A059] font-bold mt-1">
+                Studio
+              </span>
+
             </div>
           </Link>
 
@@ -130,7 +136,7 @@ const Navbar = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed inset-0 bg-[#00162E] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#003B75] via-[#002D5A] to-[#00162E] z-[100] lg:hidden pointer-events-auto"
+            className="fixed inset-0 bg-[#00162E] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#003B75] via-[#002D5A] to-[#00162E] z-[200] lg:hidden pointer-events-auto"
           >
             <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
             
@@ -152,7 +158,7 @@ const Navbar = () => {
             </div>
 
             {/* Nav Links */}
-            <div className="h-full flex flex-col justify-center px-10 gap-8 relative z-10">
+            <div className="h-full flex flex-col justify-center px-10 gap-8 relative z-10 mt-2">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.name}
@@ -184,9 +190,54 @@ const Navbar = () => {
                      <p className="text-[10px] tracking-[0.5em] text-white/20 uppercase mb-4">Get in touch</p>
                      <p className="text-[#C5A059] text-lg font-light">hello@hometech.com</p>
                    </div>
-                   <div className="flex gap-6 text-white/40 text-[10px] font-bold uppercase tracking-widest">
-                    <a href="#" className="hover:text-[#C5A059] transition-colors">Instagram</a>
-                    <a href="#" className="hover:text-[#C5A059] transition-colors">LinkedIn</a>
+                  <div className="flex gap-6 text-white/40">
+                    <motion.a
+                      href="https://www.instagram.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -3 }}
+                      className="text-white/40 hover:text-[#C5A059] transition-colors"
+                      aria-label="Instagram"
+                      title="Instagram"
+                    >
+                      <Instagram size={18} />
+                    </motion.a>
+
+                    <motion.a
+                      href="https://www.linkedin.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -3 }}
+                      className="text-white/40 hover:text-[#C5A059] transition-colors"
+                      aria-label="LinkedIn"
+                      title="LinkedIn"
+                    >
+                      <Linkedin size={18} />
+                    </motion.a>
+
+                    <motion.a
+                      href="https://twitter.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -3 }}
+                      className="text-white/40 hover:text-[#C5A059] transition-colors"
+                      aria-label="Twitter"
+                      title="Twitter"
+                    >
+                      <Twitter size={18} />
+                    </motion.a>
+
+                    <motion.a
+                      href="https://www.facebook.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -3 }}
+                      className="text-white/40 hover:text-[#C5A059] transition-colors"
+                      aria-label="Facebook"
+                      title="Facebook"
+                    >
+                      <Facebook size={18} />
+                    </motion.a>
                   </div>
                 </div>
               </motion.div>

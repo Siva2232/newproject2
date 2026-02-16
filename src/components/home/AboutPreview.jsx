@@ -112,16 +112,38 @@ const AboutPreview = () => {
               </h2>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <Button className="group bg-[#C5A059] text-white hover:bg-stone-900 transition-colors duration-500 px-10 py-5 rounded-full flex items-center gap-3">
-                <span className="text-[10px] uppercase tracking-widest font-bold">View Our Standards</span>
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </motion.div>
+           <motion.button
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="
+    group
+    relative
+    overflow-hidden
+    px-6 py-3
+    rounded-full
+    bg-[#00162E]
+    text-white
+  "
+>
+  {/* Text + Arrow */}
+  <span className="relative z-10 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold">
+    View Our Standards
+    <ArrowRight
+      size={15}
+      className="group-hover:translate-x-1 transition-transform duration-500"
+    />
+  </span>
+
+  {/* Sliding Gold Background */}
+  <div className="
+    absolute inset-0
+    bg-[#C5A059]
+    translate-y-full
+    group-hover:translate-y-0
+    transition-transform duration-500
+  " />
+</motion.button>
+
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
