@@ -59,8 +59,8 @@ const ServicesPreview = () => {
               Capabilities
             </span>
             <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-[1.1]">
-              Architectural <br /> 
-              <span className="italic font-light">Elegance</span>
+              Signature <br /> 
+              <span className="italic font-light">Works</span>
             </h2>
           </motion.div>
 
@@ -116,15 +116,17 @@ const ServicesPreview = () => {
             </div>
           </div>
           
+          <Link to="/services" className="relative">
           <motion.button 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="group flex items-center gap-4 bg-stone-900 text-white px-10 py-5 rounded-full overflow-hidden relative"
           >
-            <span className="relative z-10 uppercase text-[10px] tracking-[0.3em] font-bold">View Full Process</span>
+            <span className="relative z-10 uppercase text-[10px] tracking-[0.3em] font-bold">See All Services</span>
             <div className="absolute inset-0 bg-[#C5A059] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="relative z-10 group-hover:rotate-45 transition-transform duration-500">↗</span>
           </motion.button>
+        </Link>
         </div>
 
       </div>

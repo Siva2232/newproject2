@@ -4,7 +4,10 @@ import { motion } from "framer-motion";
 import { MessageCircle, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
 
-const FloatingContact = ({ phone = "+91 1234567890", whatsappText = "Hello%20Luxe%20Interiors" }) => {
+const FloatingContact = ({ 
+  phone = "+91 1234567890", 
+  whatsappText = "Hello%20Luxe%20Interiors" 
+}) => {
   const [hidden, setHidden] = useState(false);
   const { pathname } = useLocation();
 
@@ -31,32 +34,75 @@ const FloatingContact = ({ phone = "+91 1234567890", whatsappText = "Hello%20Lux
       {/* The "Pillar" Container */}
       <div className="bg-black/40 backdrop-blur-md border border-white/10 rounded-full p-1.5 flex flex-col gap-2 shadow-2xl">
         
-        {/* Call Button */}
-        <a href={tel} className="relative group/item">
-          <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-black hover:bg-[#af944d] hover:text-white transition-all duration-300">
-            <Phone size={20} />
+        {/* WhatsApp Button – now first */}
+        <a href={wa} className="relative group/item">
+          <div className="
+            w-12 h-12 
+            rounded-full 
+            bg-[#25D366]/10 
+            flex items-center justify-center 
+            text-[#25D366] 
+            hover:bg-[#25D366] 
+            hover:text-white 
+            hover:scale-110 
+            transition-all duration-300
+          ">
+            <FaWhatsapp size={22} />
           </div>
-          {/* Tooltip that is always ready */}
-          <span className="absolute right-16 top-1/2 -translate-y-1/2 px-3 py-1 bg-black text-[#af944d] text-[10px] font-bold tracking-widest uppercase rounded opacity-0 group-hover/item:opacity-100 transition-opacity whitespace-nowrap border border-[#af944d]/30">
-            Call Now
+
+          {/* Tooltip – always visible */}
+          <span className="
+            absolute right-16 top-1/2 -translate-y-1/2 
+            px-3 py-1.5 
+            bg-black/90 backdrop-blur-sm 
+            text-[#25D366] 
+            text-[11px] font-medium tracking-wide 
+            rounded-md 
+            border border-[#25D366]/30 
+            shadow-lg
+            whitespace-nowrap
+          ">
+            WhatsApp Now
           </span>
         </a>
 
         {/* Divider */}
         <div className="w-8 h-[1px] bg-white/10 mx-auto" />
 
-        {/* WhatsApp Button */}
-        <a href={wa} className="relative group/item">
-          <div className="w-12 h-12 rounded-full bg-[#25D366]/10 flex items-center justify-center text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all duration-300">
-            <FaWhatsapp size={22} />
+        {/* Phone Button – now second */}
+        <a href={tel} className="relative group/item">
+          <div className="
+            w-12 h-12 
+            rounded-full 
+            bg-white/10 
+            flex items-center justify-center 
+            text-white 
+            hover:bg-[#af944d] 
+            hover:text-white 
+            hover:scale-110 
+            transition-all duration-300
+          ">
+            <Phone size={20} />
           </div>
-          <span className="absolute right-16 top-1/2 -translate-y-1/2 px-3 py-1 bg-black text-[#25D366] text-[10px] font-bold tracking-widest uppercase rounded opacity-0 group-hover/item:opacity-100 transition-opacity whitespace-nowrap border border-[#25D366]/30">
-            WhatsApp
+
+          {/* Tooltip – always visible */}
+          <span className="
+            absolute right-16 top-1/2 -translate-y-1/2 
+            px-3 py-1.5 
+            bg-black/90 backdrop-blur-sm 
+            text-[#af944d] 
+            text-[11px] font-medium tracking-wide 
+            rounded-md 
+            border border-[#af944d]/30 
+            shadow-lg
+            whitespace-nowrap
+          ">
+            Get Free Consultation Call Now
           </span>
         </a>
       </div>
 
-      {/* Decorative Brand Tag */}
+      {/* Decorative Brand Tag – kept as is */}
       <div className="mt-4 overflow-hidden h-4">
         <motion.p 
           animate={{ y: [20, 0] }}

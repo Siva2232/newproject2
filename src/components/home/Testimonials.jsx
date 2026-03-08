@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useEffect } from "react";
+import { motion, useAnimationFrame } from "framer-motion";
 import SectionTitle from "../common/SectionTitle";
 import Container from "../common/Container";
 
@@ -22,9 +22,6 @@ const REVIEWS = [
     role: "Architectural Collector",
     location: "Mumbai"
   },
-
-  // --- Added 10 More ---
-
   {
     quote: "From blueprint to final execution, every phase was handled with extraordinary discipline and elegance.",
     author: "Karthik Reddy",
@@ -87,12 +84,34 @@ const REVIEWS = [
   }
 ];
 
-
 const Testimonials = () => {
+  const containerRef = useRef(null);
+  const x = useRef(0);
+
+  // Auto-scroll speed (pixels per second) — adjust as needed
+  const speed = -80; // negative = left direction
+
+  useAnimationFrame((t, delta) => {
+    if (!containerRef.current) return;
+    
+    // Move left smoothly
+    x.current += speed * (delta / 1000);
+
+    // When first half is fully off-screen → reset to start (seamless loop)
+    const width = containerRef.current.scrollWidth / 2;
+    if (x.current <= -width) {
+      x.current += width;
+    }
+
+    containerRef.current.style.transform = `translateX(${x.current}px)`;
+  });
+
+  // Duplicate reviews array → create seamless infinite loop
+  const doubledReviews = [...REVIEWS, ...REVIEWS];
+
   return (
     <section className="relative py-40 bg-[#FFFFFF] overflow-hidden">
-      
-      {/* 1. KINETIC WATERMARK (Light Mode) */}
+      {/* Kinetic watermark */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] flex items-center">
         <h2 className="text-[30vw] font-serif italic text-stone-900 whitespace-nowrap">
           VOICES — VOICES — VOICES
@@ -109,74 +128,72 @@ const Testimonials = () => {
           <SectionTitle
             title="Client Stories"
             subtitle="The true measure of our craft lies in the experiences of those who inhabit our spaces."
-            light={false} // Switch to dark text
+            light={false}
             align="left"
           />
         </motion.div>
 
-        {/* 2. THE DRAGGABLE SLIDER (Elevated Style) */}
-        <motion.div 
-          className="flex cursor-grab active:cursor-grabbing gap-8 lg:gap-12 overflow-visible"
-          drag="x"
-          dragConstraints={{ right: 0, left: -4000 }}
-        >
-          {REVIEWS.map((item, i) => (
-            <motion.div
-              key={i}
-              className="min-w-[320px] md:min-w-[550px] flex flex-col justify-between p-10 lg:p-14 bg-[#F9F9F7] border border-stone-100 relative group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
-            >
-              {/* Decorative Quote Mark (Subtle on white) */}
-              <span className="absolute top-8 left-10 text-8xl font-serif text-[#C5A059] opacity-10 leading-none">
-                “
-              </span>
+        {/* Auto-moving infinite slider */}
+        <div className="relative overflow-hidden">
+          <div
+            ref={containerRef}
+            className="
+              flex gap-8 lg:gap-12 
+              will-change-transform
+            "
+            style={{ transform: "translateX(0px)" }}
+          >
+            {doubledReviews.map((item, i) => (
+              <motion.div
+                key={i}
+                className="
+                  min-w-[320px] md:min-w-[480px] lg:min-w-[550px] 
+                  flex flex-col justify-between 
+                  p-8 lg:p-12 
+                  bg-[#F9F9F7] 
+                  border border-stone-100 
+                  relative group 
+                  transition-all duration-500 
+                  hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]
+                "
+                whileHover={{ y: -8, transition: { duration: 0.4 } }}
+              >
+                {/* Decorative quote mark */}
+                <span className="absolute top-6 left-8 text-7xl lg:text-8xl font-serif text-[#C5A059] opacity-10 leading-none">
+                  “
+                </span>
 
-              <div className="relative z-10">
-                <p className="text-xl md:text-3xl font-serif text-stone-800 leading-tight mb-12 italic tracking-tight">
-                  "{item.quote}"
-                </p>
-                
-                <div className="flex items-center gap-6">
-                  {/* Visual Line - Thinner for light mode */}
-                  <div className="w-10 h-[1px] bg-[#C5A059]" />
-                  
-                  <div>
-                    <h4 className="text-stone-900 font-bold text-[11px] uppercase tracking-[0.3em] mb-1">
-                      {item.author}
-                    </h4>
-                    <p className="text-stone-400 text-[9px] uppercase tracking-widest font-medium">
-                      {item.role} <span className="mx-2 opacity-30">|</span> {item.location}
-                    </p>
+                <div className="relative z-10">
+                  <p className="text-lg md:text-xl lg:text-2xl font-serif text-stone-800 leading-tight mb-10 lg:mb-12 italic tracking-tight">
+                    "{item.quote}"
+                  </p>
+
+                  <div className="flex items-center gap-5 lg:gap-6">
+                    <div className="w-10 h-[1px] bg-[#C5A059]" />
+                    <div>
+                      <h4 className="text-stone-900 font-bold text-[11px] uppercase tracking-[0.3em] mb-1">
+                        {item.author}
+                      </h4>
+                      <p className="text-stone-500 text-[9px] lg:text-[10px] uppercase tracking-widest font-medium">
+                        {item.role} <span className="mx-2 opacity-30">|</span> {item.location}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Technical Stamp */}
-              <span className="absolute bottom-10 right-10 text-[9px] font-mono text-stone-300 uppercase tracking-widest border-l border-stone-200 pl-4">
-                Verified Resident / 0{i + 1}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
+                {/* Technical stamp */}
+                <span className="absolute bottom-6 right-6 lg:bottom-8 lg:right-10 text-[9px] font-mono text-stone-300 uppercase tracking-widest border-l border-stone-200 pl-3 lg:pl-4">
+                  Verified · {i + 1}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
 
-        {/* 3. NAVIGATION HINT (Clean Contrast) */}
-        <div className="mt-24 flex justify-between items-center border-t border-stone-100 pt-10 relative z-10">
-           <div className="flex gap-3">
-              {[0, 1, 2].map((dot) => (
-                <div key={dot} className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${dot === 0 ? 'bg-[#C5A059]' : 'bg-stone-200'}`} />
-              ))}
-           </div>
-           <div className="flex items-center gap-4 group">
-             <span className="text-[10px] uppercase tracking-[0.4em] text-stone-400 group-hover:text-stone-900 transition-colors cursor-default">
-                Swipe to explore
-             </span>
-             <motion.div 
-               animate={{ x: [0, 10, 0] }} 
-               transition={{ repeat: Infinity, duration: 2 }}
-               className="text-[#C5A059]"
-             >
-               →
-             </motion.div>
-           </div>
+        {/* Optional hint (can be removed if auto-movement is enough) */}
+        <div className="mt-16 flex justify-center items-center gap-3 text-stone-400 text-[10px] uppercase tracking-[0.4em]">
+          <span>Client Testimonials</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] animate-pulse" />
         </div>
       </Container>
     </section>

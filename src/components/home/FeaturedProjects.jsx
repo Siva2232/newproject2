@@ -3,27 +3,11 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Container from "../common/Container";
 import ProjectCard from "../projects/ProjectCard";
+import productsData from "../../data/productsData";
 
-const LIVE_PROJECTS = [
-  {
-    id: "01",
-    title: "Aura Residence",
-    category: "Coastal Minimalist",
-    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070",
-  },
-  {
-    id: "02",
-    title: "Obsidian Loft",
-    category: "Industrial Luxe",
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974",
-  },
-  {
-    id: "03",
-    title: "The Glass Pavilion",
-    category: "Architectural Concept",
-    image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1974",
-  },
-];
+// use first three products for the featured carousel – keeps all downstream
+// logic unchanged, just swaps the data source
+const LIVE_PROJECTS = productsData.slice(0, 3);
 
 const FeaturedProjects = () => {
   const containerRef = useRef(null);
@@ -88,7 +72,7 @@ const FeaturedProjects = () => {
     </div>
     
     <h2 className="text-5xl md:text-8xl font-serif text-white leading-[1.05] mb-8 tracking-tighter">
-      Signature <span className="italic font-light opacity-95 text-[#C5A059]">Spaces</span>
+      Signature <span className="italic font-light opacity-95 text-[#C5A059]">Products</span>
     </h2>
 
     {/* NEW DESCRIPTION ADDED HERE */}
@@ -109,21 +93,21 @@ const FeaturedProjects = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-y-32 md:gap-y-0 relative">
           
           <motion.div style={{ y: yLeft1 }} className="md:col-span-7 lg:col-span-6 z-10">
-            <Link to={`/projects/${Number(LIVE_PROJECTS[0].id)}`} aria-label={`View ${LIVE_PROJECTS[0].title}`} className="block">
+            <Link to={`/products/${Number(LIVE_PROJECTS[0].id)}`} aria-label={`View ${LIVE_PROJECTS[0].title}`} className="block">
               <ProjectCard {...LIVE_PROJECTS[0]} number="01" />
             </Link>
           </motion.div>
 
           <motion.div style={{ y: yRight }} className="md:col-span-6 lg:col-span-6 md:col-start-7 lg:col-start-7 md:mt-64 lg:mt-80 z-10">
             <div className="md:pl-12 lg:pl-20">
-              <Link to={`/projects/${Number(LIVE_PROJECTS[1].id)}`} aria-label={`View ${LIVE_PROJECTS[1].title}`} className="block">
+              <Link to={`/products/${Number(LIVE_PROJECTS[1].id)}`} aria-label={`View ${LIVE_PROJECTS[1].title}`} className="block">
                 <ProjectCard {...LIVE_PROJECTS[1]} number="02" />
               </Link>
             </div>
           </motion.div>
 
           <motion.div style={{ y: yLeft2 }} className="md:col-span-7 lg:col-span-6 md:mt-40 lg:mt-0 z-10">
-            <Link to={`/projects/${Number(LIVE_PROJECTS[2].id)}`} aria-label={`View ${LIVE_PROJECTS[2].title}`} className="block">
+            <Link to={`/products/${Number(LIVE_PROJECTS[2].id)}`} aria-label={`View ${LIVE_PROJECTS[2].title}`} className="block">
               <ProjectCard {...LIVE_PROJECTS[2]} number="03" />
             </Link>
           </motion.div>
@@ -135,15 +119,15 @@ const FeaturedProjects = () => {
           whileInView={{ opacity: 1 }}
           className="mt-48 md:mt-72 flex justify-between items-center border-t border-white/5 pt-16"
         >
-          <div className="flex items-center gap-12 group cursor-pointer">
+          <Link to="/services?view=combined" className="flex items-center gap-12 group cursor-pointer">
              <div className="relative flex items-center justify-center">
                 <div className="w-16 h-16 rounded-full border border-white/10 group-hover:border-[#C5A059] transition-all duration-700 ease-out group-hover:scale-110" />
                 <span className="absolute text-white group-hover:text-[#C5A059] transition-colors duration-300">↗</span>
              </div>
              <p className="text-2xl font-serif text-white/40 group-hover:text-white transition-all duration-500">
-                View <span className="italic text-[#C5A059]/60 group-hover:text-[#C5A059]">Portfolio</span>
+                See All <span className="italic text-[#C5A059]/60 group-hover:text-[#C5A059]">Products</span>
              </p>
-          </div>
+          </Link>
         </motion.div>
 
       </Container>

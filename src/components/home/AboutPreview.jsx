@@ -1,8 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Container from "../common/Container";
-import Button from "../common/Button";
-import { ShieldCheck, Zap, Layers, PenTool, ArrowRight } from "lucide-react"; 
+import { Quote } from "lucide-react"; 
 
 const AboutPreview = () => {
   const containerRef = useRef(null);
@@ -12,159 +11,116 @@ const AboutPreview = () => {
     offset: ["start end", "end start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  // Parallax offsets for different elements
+  const yImage = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const yBorder = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const yMission = useTransform(scrollYProgress, [0, 1], [20, -40]);
+  const yVision = useTransform(scrollYProgress, [0, 1], [40, -80]);
 
   const curtainVariant = {
     initial: { scaleX: 1 },
-    animate: { scaleX: 0, transition: { duration: 1.2, ease: [0.77, 0, 0.175, 1] } }
+    animate: { scaleX: 0, transition: { duration: 1.4, ease: [0.77, 0, 0.175, 1] } }
   };
-
-  const imageVariant = {
-    initial: { scale: 1.2 },
-    animate: { scale: 1, transition: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } }
-  };
-
-  const whyChooseData = [
-    {
-      icon: <PenTool size={20} />,
-      title: "Bespoke Design",
-      desc: "Every blueprint is tailored to your unique lifestyle and aesthetic preferences."
-    },
-    {
-      icon: <Layers size={20} />,
-      title: "Seamless Integration",
-      desc: "High-end technology that blends invisibly into your home's architecture."
-    },
-    {
-      icon: <ShieldCheck size={20} />,
-      title: "Trusted Security",
-      desc: "Enterprise-grade protection ensuring your private sanctuary remains private."
-    }
-  ];
 
   return (
-    <section ref={containerRef} className="py-32 bg-[#F5F5F3] overflow-hidden">
+    <section ref={containerRef} className="py-24 md:py-40 bg-[#F5F5F3] overflow-hidden">
       <Container>
-        {/* SECTION 1: MAIN PREVIEW */}
-        <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-40">
-          <div className="relative lg:col-span-7">
+        <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          
+          {/* LEFT COLUMN: THE VISUAL ANCHOR */}
+          <div className="relative lg:col-span-6 sticky top-24">
             <motion.div 
-              style={{ y: y1 }}
+              style={{ y: yImage }}
               initial="initial"
               whileInView="animate"
-              viewport={{ once: true, margin: "-100px" }}
-              className="relative z-10 aspect-[4/5] md:aspect-[16/10] lg:aspect-[4/5] overflow-hidden shadow-2xl"
+              viewport={{ once: true }}
+              className="relative z-10 aspect-[3/4] overflow-hidden shadow-2xl rounded-sm"
             >
               <motion.div variants={curtainVariant} className="absolute inset-0 bg-[#C5A059] z-20 origin-left" />
               <motion.img 
-                variants={imageVariant}
-                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80" 
-                alt="Studio interior" 
-                className="w-full h-full object-cover"
+                initial={{ scale: 1.3 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 2, ease: "easeOut" }}
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80" 
+                alt="Architectural Excellence" 
+                className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-1000"
               />
+              <div className="absolute inset-0 bg-black/10 mix-blend-overlay" />
             </motion.div>
 
+            {/* Floating Decorative Frame */}
             <motion.div 
-              style={{ y: y2 }}
-              className="absolute -bottom-10 -right-10 w-full h-full border-[1px] border-[#C5A059] z-0 hidden lg:block"
+              style={{ y: yBorder }}
+              className="absolute top-12 -left-8 w-full h-full border-[1px] border-stone-300 z-0 hidden lg:block"
             />
+            
+            {/* Project Counter Ornament */}
+            <div className="absolute -bottom-6 -left-6 bg-[#C5A059] p-8 hidden md:block z-30 shadow-xl">
+               <p className="text-white font-serif text-4xl mb-1">50+</p>
+               <p className="text-white/80 text-[10px] uppercase tracking-widest font-bold">Years Legacy</p>
+            </div>
           </div>
 
-          <div className="lg:col-span-5 lg:-ml-20 z-20 mt-12 lg:mt-0">
+          {/* RIGHT COLUMN: CONTENT BLOCKS */}
+          <div className="lg:col-span-6 lg:pt-12 space-y-12">
+            
+            <header className="mb-16">
+               <motion.span 
+                 initial={{ opacity: 0, x: -20 }}
+                 whileInView={{ opacity: 1, x: 0 }}
+                 className="text-[#C5A059] uppercase text-xs font-bold tracking-[0.5em] mb-4 block"
+               >
+                 Our Foundation
+               </motion.span>
+               <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-[1.1]">
+                 Crafting the <br /> <span className="italic font-light text-stone-500 underline decoration-[#C5A059]/30 underline-offset-8">Future</span>.
+               </h2>
+            </header>
+
+            {/* Our Mission */}
             <motion.div 
-              initial={{ opacity: 0, y: 60 }}
+              style={{ y: yMission }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="bg-white p-8 md:p-16 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border-t-[6px] border-[#C5A059]"
+              className="group relative bg-white p-10 md:p-14 shadow-[40px_40px_80px_-40px_rgba(0,0,0,0.1)] transition-transform duration-500"
             >
-              <span className="text-[#C5A059] uppercase text-xs font-bold mb-6 block tracking-[0.4em]">The Heritage</span>
-              <h2 className="text-4xl md:text-5xl font-serif text-stone-900 mb-8 leading-tight">
-                Crafting <span className="italic font-light">Soul</span> into <br /> Modern Spaces
-              </h2>
-              <p className="text-stone-600 font-light leading-relaxed mb-10 text-lg">
-                For over a decade, our studio has redefined luxury living by 
-                merging architectural precision with warmth.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-8 items-start">
-                <Button variant="outline" className="px-8 py-4 font-bold tracking-widest text-[10px] uppercase">Our Philosophy</Button>
-                <div className="flex items-center gap-4 border-l border-stone-200 pl-6">
-                  <span className="text-4xl font-serif text-[#C5A059]">12+</span>
-                  <span className="text-[10px] uppercase tracking-widest text-stone-400 font-bold leading-tight">Years of <br /> Excellence</span>
-                </div>
+              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-[#C5A059] transition-all duration-700" />
+              <Quote className="text-stone-100 absolute top-8 right-8 w-16 h-16 -z-0" />
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl md:text-3xl font-serif text-stone-900 mb-6 flex items-center gap-4">
+                  <span className="text-[#C5A059] text-sm font-sans font-bold tracking-tighter">01.</span>
+                  Our Mission
+                </h3>
+                <p className="text-stone-500 font-light leading-[1.8] text-lg">
+                  At Hometech Solutions, our mission is to deliver complete construction, interior, and smart technology solutions that enhance the functionality, security, and beauty of every space. We provide end-to-end services—from civil works and interior design to automation systems—ensuring premium results through one trusted partner.
+                </p>
               </div>
             </motion.div>
-          </div>
-        </div>
 
-        {/* SECTION 2: WHY CHOOSE HEADER & GRID */}
-        <div className="pt-24 border-t border-stone-200">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+            {/* Our Vision */}
+            <motion.div 
+              style={{ y: yVision }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="group relative bg-stone-900 p-10 md:p-14 shadow-2xl"
             >
-              <h4 className="text-[#C5A059] uppercase text-xs font-bold mb-4 tracking-[0.4em]">The Home Tech Edge</h4>
-              <h2 className="text-4xl md:text-6xl font-serif text-stone-900 leading-tight">
-                Why <span className="italic font-light text-stone-500">Choose</span> Our Studio?
-              </h2>
+              <div className="absolute top-0 right-0 w-0 h-[2px] group-hover:w-full bg-[#C5A059] transition-all duration-700" />
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl md:text-3xl font-serif text-white mb-6 flex items-center gap-4">
+                  <span className="text-[#C5A059] text-sm font-sans font-bold tracking-tighter">02.</span>
+                  Our Vision
+                </h3>
+                <p className="text-stone-400 font-light leading-[1.8] text-lg">
+                  To become one of the most trusted integrated home solutions brands across Bharath. Backed by the 50-year engineering legacy of Kavitha Engineerings, we aim to modernize homes and commercial spaces by creating smart, sustainable, and beautifully designed environments while maintaining the highest standards of quality and innovation.
+                </p>
+              </div>
             </motion.div>
 
-           <motion.button
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
-  className="
-    group
-    relative
-    overflow-hidden
-    px-6 py-3
-    rounded-full
-    bg-[#00162E]
-    text-white
-  "
->
-  {/* Text + Arrow */}
-  <span className="relative z-10 flex items-center gap-2 text-[11px] uppercase tracking-widest font-bold">
-    View Our Standards
-    <ArrowRight
-      size={15}
-      className="group-hover:translate-x-1 transition-transform duration-500"
-    />
-  </span>
-
-  {/* Sliding Gold Background */}
-  <div className="
-    absolute inset-0
-    bg-[#C5A059]
-    translate-y-full
-    group-hover:translate-y-0
-    transition-transform duration-500
-  " />
-</motion.button>
-
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-            {whyChooseData.map((item, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 * index, duration: 0.8 }}
-                className="group"
-              >
-                <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-white text-[#C5A059] shadow-md mb-8 group-hover:bg-[#C5A059] group-hover:text-white transition-all duration-500 transform group-hover:-rotate-6">
-                  {item.icon}
-                </div>
-                <h3 className="text-stone-900 font-serif text-2xl mb-4">{item.title}</h3>
-                <p className="text-stone-500 font-light text-base leading-relaxed">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </Container>
