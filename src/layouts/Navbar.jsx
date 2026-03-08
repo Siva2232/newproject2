@@ -129,122 +129,130 @@ const Navbar = () => {
       </div>
 
       {/* 4. MOBILE MENU OVERLAY */}
-      <AnimatePresence>
-        {isOpen && (
+     <AnimatePresence>
+  {isOpen && (
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "100%" }}
+      transition={{ type: "spring", damping: 30, stiffness: 300 }}
+      className="fixed inset-0 bg-[#00162E] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#003B75] via-[#002D5A] to-[#00162E] z-[200] lg:hidden pointer-events-auto"
+    >
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
+
+      {/* Close Button */}
+      <div className="absolute top-6 left-6 right-6 flex justify-between items-center z-[110]">
+        <span className="text-[9px] tracking-[0.4em] text-[#C5A059] font-bold uppercase opacity-50">
+          Menu
+        </span>
+
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsOpen(false);
+          }}
+          className="p-2 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 text-white shadow-xl flex items-center justify-center transition-colors hover:bg-[#C5A059]/20"
+        >
+          <X size={20} strokeWidth={1.5} className="text-[#C5A059]" />
+        </motion.button>
+      </div>
+
+      {/* Nav Links */}
+      <div className="h-full flex flex-col justify-center px-6 gap-5 relative z-10 mt-2">
+        {navLinks.map((link, i) => (
           <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed inset-0 bg-[#00162E] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#003B75] via-[#002D5A] to-[#00162E] z-[200] lg:hidden pointer-events-auto"
+            key={link.name}
+            initial={{ x: -30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.1 * i + 0.3 }}
           >
-            <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
-            
-            {/* Functional Close Button inside Overlay */}
-            <div className="absolute top-8 left-10 right-10 flex justify-between items-center z-[110]">
-               <span className="text-[10px] tracking-[0.5em] text-[#C5A059] font-bold uppercase opacity-50">Menu</span>
-               
-               <motion.button
-                 whileHover={{ scale: 1.1 }}
-                 whileTap={{ scale: 0.9 }}
-                 onClick={(e) => {
-                   e.stopPropagation();
-                   setIsOpen(false);
-                 }}
-                 className="p-3 rounded-full border border-[#C5A059]/30 bg-[#C5A059]/10 text-white shadow-xl flex items-center justify-center transition-colors hover:bg-[#C5A059]/20"
-               >
-                 <X size={24} strokeWidth={1.5} className="text-[#C5A059]" />
-               </motion.button>
-            </div>
+            <Link
+              to={link.path}
+              className="group relative inline-block"
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="text-[9px] text-[#C5A059] font-mono mb-1 block">
+                {link.id}
+              </span>
 
-            {/* Nav Links */}
-            <div className="h-full flex flex-col justify-center px-10 gap-8 relative z-10 mt-2">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ x: -30, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.1 * i + 0.3 }}
-                >
-                  <Link 
-                    to={link.path} 
-                    className="group relative inline-block"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <span className="text-[10px] text-[#C5A059] font-mono mb-2 block">{link.id}</span>
-                    <h2 className={`text-5xl font-serif tracking-tighter transition-all ${location.pathname === link.path ? "text-[#C5A059] italic pl-4" : "text-white/40 group-hover:text-white"}`}>
-                      {link.name}
-                    </h2>
-                  </Link>
-                </motion.div>
-              ))}
-
-              <motion.div 
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                transition={{ delay: 0.8 }}
-                className="mt-10 pt-10 border-t border-white/10"
+              <h2
+                className={`text-3xl font-serif tracking-tight transition-all ${
+                  location.pathname === link.path
+                    ? "text-[#C5A059] italic pl-3"
+                    : "text-white/40 group-hover:text-white"
+                }`}
               >
-                <div className="flex flex-col gap-6">
-                   <div>
-                     <p className="text-[10px] tracking-[0.5em] text-white/20 uppercase mb-4">Get in touch</p>
-                     <p className="text-[#C5A059] text-lg font-light">hello@hometech.com</p>
-                   </div>
-                  <div className="flex gap-6 text-white/40">
-                    <motion.a
-                      href="https://www.instagram.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ y: -3 }}
-                      className="text-white/40 hover:text-[#C5A059] transition-colors"
-                      aria-label="Instagram"
-                      title="Instagram"
-                    >
-                      <Instagram size={18} />
-                    </motion.a>
-
-                    <motion.a
-                      href="https://www.linkedin.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ y: -3 }}
-                      className="text-white/40 hover:text-[#C5A059] transition-colors"
-                      aria-label="LinkedIn"
-                      title="LinkedIn"
-                    >
-                      <Linkedin size={18} />
-                    </motion.a>
-
-                    <motion.a
-                      href="https://twitter.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ y: -3 }}
-                      className="text-white/40 hover:text-[#C5A059] transition-colors"
-                      aria-label="Twitter"
-                      title="Twitter"
-                    >
-                      <Twitter size={18} />
-                    </motion.a>
-
-                    <motion.a
-                      href="https://www.facebook.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ y: -3 }}
-                      className="text-white/40 hover:text-[#C5A059] transition-colors"
-                      aria-label="Facebook"
-                      title="Facebook"
-                    >
-                      <Facebook size={18} />
-                    </motion.a>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+                {link.name}
+              </h2>
+            </Link>
           </motion.div>
-        )}
-      </AnimatePresence>
+        ))}
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+          className="mt-6 pt-6 border-t border-white/10"
+        >
+          <div className="flex flex-col gap-4">
+            <div>
+              <p className="text-[9px] tracking-[0.4em] text-white/20 uppercase mb-2">
+                Get in touch
+              </p>
+              <p className="text-[#C5A059] text-sm font-light">
+                hello@hometech.com
+              </p>
+            </div>
+
+            <div className="flex gap-4 text-white/40">
+              <motion.a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -3 }}
+                className="text-white/40 hover:text-[#C5A059] transition-colors"
+              >
+                <Instagram size={16} />
+              </motion.a>
+
+              <motion.a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -3 }}
+                className="text-white/40 hover:text-[#C5A059] transition-colors"
+              >
+                <Linkedin size={16} />
+              </motion.a>
+
+              <motion.a
+                href="https://twitter.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -3 }}
+                className="text-white/40 hover:text-[#C5A059] transition-colors"
+              >
+                <Twitter size={16} />
+              </motion.a>
+
+              <motion.a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -3 }}
+                className="text-white/40 hover:text-[#C5A059] transition-colors"
+              >
+                <Facebook size={16} />
+              </motion.a>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
 
       {/* START PROJECT MODAL (component) */}
       <StartProjectModal open={showProjectModal} onClose={() => setShowProjectModal(false)} services={servicesData} products={productsData} />
