@@ -119,7 +119,7 @@ const FeaturedProjects = () => {
           whileInView={{ opacity: 1 }}
           className="mt-48 md:mt-72 flex justify-between items-center border-t border-white/5 pt-16"
         >
-          <Link to="/services?view=combined" className="flex items-center gap-12 group cursor-pointer">
+          <Link to="/services" className="flex items-center gap-12 group cursor-pointer">
              <div className="relative flex items-center justify-center">
                 <div className="w-16 h-16 rounded-full border border-white/10 group-hover:border-[#C5A059] transition-all duration-700 ease-out group-hover:scale-110" />
                 <span className="absolute text-white group-hover:text-[#C5A059] transition-colors duration-300">↗</span>
