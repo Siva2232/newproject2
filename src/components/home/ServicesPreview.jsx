@@ -60,7 +60,7 @@ const ServicesPreview = () => {
             </span>
             <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-[1.1]">
               Signature <br /> 
-              <span className="italic font-light">Works</span>
+              <span className="italic font-light">Service Works</span>
             </h2>
           </motion.div>
 

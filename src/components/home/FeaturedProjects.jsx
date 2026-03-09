@@ -82,9 +82,7 @@ const FeaturedProjects = () => {
       transition={{ delay: 0.2 }}
       className="text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-xl border-l border-[#C5A059]/30 pl-6"
     >
-      Where advanced technology meets bespoke interior architecture. We curate 
-      intelligent environments that redefine the standard of modern living, 
-      crafted specifically for the discerning eye.
+     Premium materials designed to transform ordinary spaces into extraordinary interiors.
     </motion.p>
   </motion.div>
 </div>

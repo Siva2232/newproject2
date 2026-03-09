@@ -63,13 +63,12 @@ const Footer = () => {
             </Link>
 
             <p className="text-gray-500 text-lg font-light max-w-sm leading-relaxed">
-              Elevating residential environments through intelligent integration and 
-              bespoke technical craftsmanship.
+              Where Every Building Solution Comes Together
             </p>
 
             <div className="flex gap-6">
               <motion.a
-                href="https://www.instagram.com/"
+                href="https://www.instagram.com/hometechsolutionsstudio?igsh=MWI0bmY1c3Q0NGdybw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
@@ -80,7 +79,7 @@ const Footer = () => {
                 <Instagram size={16} />
               </motion.a>
 
-              <motion.a
+              {/* <motion.a
                 href="https://twitter.com/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -90,9 +89,9 @@ const Footer = () => {
                 title="Twitter"
               >
                 <Twitter size={16} />
-              </motion.a>
+              </motion.a> */}
 
-              <motion.a
+              {/* <motion.a
                 href="https://www.linkedin.com/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -102,10 +101,10 @@ const Footer = () => {
                 title="LinkedIn"
               >
                 <Linkedin size={16} />
-              </motion.a>
+              </motion.a> */}
 
               <motion.a
-                href="https://www.facebook.com/"
+                href="https://www.facebook.com/profile.php?id=61576541962910"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3 }}
@@ -149,7 +148,7 @@ const Footer = () => {
             <div className="col-span-2 md:col-span-1">
               <h4 className="text-[#C5A059] text-[10px] uppercase tracking-[0.4em] font-bold mb-8">Contact</h4>
               <p className="text-black text-lg font-serif italic mb-2 hover:text-[#C5A059] transition-colors cursor-pointer">
-                hello@hometech.studio
+                hometechalapy@gmail.com
               </p>
               <p className="text-gray-400 text-sm font-light tracking-wide">+91 1234567890</p>
             </div>

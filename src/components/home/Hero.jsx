@@ -4,36 +4,36 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 const PROJECTS = [
   {
     id: "01",
-    label: "Where Every Building Solution Comes Together.",
-    title: "Modern Loft",
+    label: "Services",
+    title: "Where Every Building Solution Comes Together",
     before: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80",
     after: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80",
     gallery: [], // empty as per your request
-    desc: "Industrial raw to velvet warmth.",
+    desc: "Complete Residential and Commercial design,construction,Renovation & smart security style All under one roof.",
     hasBeforeAfter: true
   },
   {
     id: "02",
-    label: "Services",
-    title: "Urban Office",
+    label: "Products",
+    title: "Premimum Materials for Modern Interiors",
     gallery: [
       "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80",
       "https://images.unsplash.com/photo-1497215842964-222b430dc094?q=80",
       "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80"
     ],
-    desc: "Workspaces that inspire.",
+    desc: "Discover high-quality interior and architectural materials designed to enhance the beauty, durability, and functionality of your spaces",
     hasBeforeAfter: false
   },
   {
     id: "03",
-    label: "Products",
-    title: "Glass House",
+    label: "Home Automation",
+    title: "Smart Livings Starts At Home",
     gallery: [
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80",
       "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80",
       "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?q=80"
     ],
-    desc: "Minimalist outdoor integration.",
+    desc: "Experience the future of living with intelligent home automation systems that bring comfort, security, and control right to your fingertips.",
     hasBeforeAfter: false
   }
 ];
@@ -174,11 +174,11 @@ const Hero = () => {
                 {activeProject.label}
               </span>
 
-              <h1 className="text-5xl md:text-7xl lg:text-9xl font-serif text-white mb-6 leading-[0.9] tracking-tighter italic">
+              <h1 className="text-3xl md:text-7xl lg:text-7xl font-serif text-white mb-6 leading-[0.9] tracking-tighter italic">
                 {activeProject.title}
               </h1>
 
-              <p className="max-w-md text-stone-400 text-sm md:text-base font-light leading-relaxed tracking-wide border-l border-[#C5A059]/50 pl-6">
+              <p className="max-w-md text-stone-400 text-md md:text-2xl font-light leading-relaxed tracking-wide border-l border-[#C5A059]/50 pl-6">
                 {activeProject.desc}
               </p>
 
@@ -254,7 +254,7 @@ const Hero = () => {
                 activeProject.id === project.id ? "text-[#C5A059]" : "text-stone-600"
               }`}
             >
-              {project.title}
+              {project.label}
             </span>
           </button>
         ))}

@@ -61,9 +61,9 @@ const Contact = () => {
             >
               <div className="space-y-8">
                 {[
-                  { icon: <Mail size={20} />, label: "Email us", val: "hello@hometech.com" },
+                  { icon: <Mail size={20} />, label: "Email us", val: "hometechalapy@gmail.com" },
                   { icon: <Phone size={20} />, label: "Call us", val: "+1 (555) 000-TECH" },
-                  { icon: <Clock size={20} />, label: "Office Hours", val: "Mon — Fri: 9am - 6pm" }
+                  { icon: <Clock size={20} />, label: "Office Hours", val: "Mon — Sat: 9am - 6pm" }
                 ].map((item, i) => (
                   <div key={i} className="group flex gap-6">
                     <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#C5A059] group-hover:bg-[#C5A059] group-hover:text-black transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(197,160,89,0.4)]">

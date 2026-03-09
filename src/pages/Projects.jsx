@@ -96,9 +96,9 @@ const Projects = () => {
             <div className="absolute top-1/2 left-0 w-full h-[1px] bg-[#C5A059]/10 hidden md:block" />
             
             {[
-              { title: "Conceptualize", desc: "Interactive moodboarding and spatial planning sessions." },
-              { title: "Integrate", desc: "Engineering the invisible tech layers into your design." },
-              { title: "Perfect", desc: "Rigorous testing and white-glove finishing of every detail." }
+              { title: "Planning & Design", desc: "We begin by understanding your vision, requirements, and space to create a well-planned design that balances functionality, aesthetics, and modern innovation." },
+              { title: "Precision Execution", desc: "Our skilled team brings the plan to life using quality materials, advanced techniques, and careful attention to every detail during installation and construction." },
+              { title: "Final Perfection & Handover", desc: "Before completion, every project goes through quality checks to ensure flawless finishing, durability, and complete customer satisfaction." }
             ].map((step, i) => (
               <motion.div key={i} whileHover={{ y: -10 }} className="relative z-10 p-8 bg-[#001A33]/50 backdrop-blur-sm border border-white/5 group">
                 <div className="w-12 h-12 rounded-full border border-[#C5A059] flex items-center justify-center mb-8 group-hover:bg-[#C5A059] group-hover:text-black transition-all">
@@ -119,16 +119,16 @@ const Projects = () => {
             <div>
               <h2 className="text-4xl md:text-5xl font-light mb-8">Frequently <br /> <span className="text-[#C5A059]">Asked</span> Questions</h2>
               <p className="text-white/40 max-w-sm">Everything you need to know about starting your next-level project with Home Tech Solutions.</p>
-              <motion.button className="mt-12 flex items-center gap-4 text-[#C5A059] text-xs font-bold tracking-widest uppercase group">
+              {/* <motion.button className="mt-12 flex items-center gap-4 text-[#C5A059] text-xs font-bold tracking-widest uppercase group">
                 Download PDF Portfolio <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-              </motion.button>
+              </motion.button> */}
             </div>
             
             <div className="space-y-4">
               {[
-                { q: "How long does a typical project take?", a: "Residential projects typically span 4-8 months depending on complexity and customization." },
-                { q: "Do you offer international services?", a: "Yes, we have completed award-winning projects across Europe, Asia, and North America." },
-                { q: "Can tech be added to existing designs?", a: "Absolutely. We specialize in 'Invisible Integration' for both new builds and heritage renovations." }
+                { q: " ⁠Do you provide complete end-to-end project support?", a: "Yes. Hometech Solutions provides complete end-to-end support for your projects—from planning and material selection to installation and final finishing. Our experienced team ensures every stage of the work is handled professionally so clients receive a smooth, hassle-free experience." },
+                { q: "⁠⁠Can smart home automation be installed in existing homes?", a: "Absolutely. Smart home automation systems can be integrated into both new constructions and existing homes. Our team evaluates your current setup and installs suitable automation solutions that allow you to control lighting, security, gates, and other systems easily through smart devices." },
+                { q: "Do you provide customized solutions based on client requirements?", a: "Yes. At Hometech Solutions, every project is tailored to the client’s needs and preferences. Whether it is interior materials, smart home automation, renovation work, or structural installations, our team carefully understands your requirements and delivers customized solutions that match your space, design vision, and budget." }
               ].map((faq, i) => (
                 <div key={i} className="border-b border-white/5 overflow-hidden">
                   <button onClick={() => setActiveFaq(i)} className="w-full py-6 flex items-center justify-between text-left">

@@ -19,36 +19,36 @@ const About = () => {
     offset: ["start start", "end end"],
   });
 
-  const aboutSections = [
-    {
-      num: "01",
-      label: "HERITAGE",
-      title: "Decades of Precision",
-      desc: "Our journey began with a simple premise: technology should be felt, not seen. We've spent 12+ years mastering the art of invisible integration.",
-      image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974"
-    },
-    {
-      num: "02",
-      label: "VISION",
-      title: "Orchestrating Environments",
-      desc: "We envision homes that respond to your presence. A symphony of lighting, climate, and sound that adapts to your mood automatically.",
-      image: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=2070"
-    },
-    {
-      num: "03",
-      label: "APPROACH",
-      title: "Bespoke Engineering",
-      desc: "Every project is a unique canvas. We collaborate with architects and designers to ensure that high-tech solutions enhance the aesthetic soul of the space.",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2072"
-    },
-    {
-      num: "04",
-      label: "MASTERY",
-      title: "Refining Excellence",
-      desc: "From acoustic calibration to ultra-secure networking, our team of specialists delivers a turnkey experience that redefines modern living.",
-      image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=2070"
-    },
-  ];
+ const aboutSections = [
+  {
+    num: "01",
+    label: "HERITAGE",
+    title: "A 50-Year Legacy of Excellence",
+    desc: "Home Tech Solution is built upon a remarkable 50-year legacy of structural and architectural expertise. As the proud sister concern of Kavitha Engineerings, founded by the visionary Mr. Chakrapani, our foundation is rooted in decades of trust, quality, and engineering excellence. Today, the legacy continues under the leadership of Mr. Ragesh Chakrapani, preserving a tradition that has shaped homes and spaces for generations.",
+    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974"
+  },
+  {
+    num: "02",
+    label: "LEADERSHIP",
+    title: "The Third Generation Vision",
+    desc: "Home Tech Solution represents the dynamic third generation of this esteemed family legacy. The company is passionately led by Rakendu J Rakesh, daughter of Mr. Ragesh Chakrapani. As a skilled Interior Design Specialist, she brings a fresh and contemporary design perspective while preserving the family’s long-standing tradition of craftsmanship and innovation.",
+    image: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=2070"
+  },
+  {
+    num: "03",
+    label: "VISION",
+    title: "Transforming Homes into Experiences",
+    desc: "Under Rakendu’s leadership, Home Tech Solution blends decades of engineering knowledge with modern interior design trends. Our mission is to transform ordinary houses into vibrant, functional, and inspiring living spaces. From refreshing a single room to redesigning entire homes, we ensure a seamless journey from concept to completion, delivering personalized spaces that reflect each client’s lifestyle and personality.",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2072"
+  },
+  {
+    num: "04",
+    label: "PHILOSOPHY",
+    title: "Engineering Emotion in Every Space",
+    desc: "At Home Tech Solution, we believe that a home is more than just a structure—it’s an emotional experience. Our philosophy centers on 'Engineering Emotion,' where we meticulously craft spaces that evoke feelings of comfort, joy, and inspiration. By seamlessly integrating technology with thoughtful design, we create homes that not only look stunning but also enhance the way you live and feel every day.",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070"
+  }
+];
 
   // Height logic: (Number of sections) * 100vh
   const sectionHeight = `${aboutSections.length * 100}vh`;
