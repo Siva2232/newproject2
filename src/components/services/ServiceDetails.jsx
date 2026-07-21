@@ -43,7 +43,7 @@ const ServiceDetails = ({ service }) => {
       "
     >
       {/* 1. HERO SECTION */}
-      <section className="relative h-[85vh] w-full overflow-hidden flex items-end pb-24">
+      <section className="relative h-[75vh] md:h-[85vh] w-full overflow-hidden flex items-end pb-16 md:pb-24">
         <div className="absolute inset-0 z-0">
           <img
             src={image || heroFallback}
@@ -73,7 +73,7 @@ const ServiceDetails = ({ service }) => {
             <span className="text-[#C5A059] uppercase tracking-[0.5em] text-[10px] font-bold mb-6 block">
               {title || "Service"}
             </span>
-            <h1 className="text-5xl sm:text-6xl md:text-8xl font-serif leading-[0.9] tracking-tighter mb-8 text-white drop-shadow-lg">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif leading-[1] md:leading-[0.9] tracking-tighter mb-6 md:mb-8 text-white drop-shadow-lg">
               {title}
             </h1>
             <div className="flex flex-wrap gap-6">
@@ -96,17 +96,17 @@ const ServiceDetails = ({ service }) => {
       </section>
 
       {/* 2. OVERVIEW & GALLERY GRID */}
-      <section className="py-32 relative">
+      <section className="py-16 md:py-32 relative">
         <Container>
-          <div className="grid lg:grid-cols-12 gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div className="lg:col-span-5">
-              <h3 className="text-[#C5A059] text-xs font-bold tracking-[0.4em] uppercase mb-8">
+              <h3 className="text-[#C5A059] text-xs font-bold tracking-[0.4em] uppercase mb-6 md:mb-8">
                 About {title}
               </h3>
-              <h2 className="text-4xl font-serif mb-10 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-serif mb-6 md:mb-10 leading-tight">
                 {shortDescription.split(" ")[0]} <span className="italic text-stone-400">Details</span>
               </h2>
-              <p className="text-white/70 text-lg font-light leading-relaxed mb-8">
+              <p className="text-white/70 text-base md:text-lg font-light leading-relaxed mb-8">
                 {fullDescription || shortDescription ||
                   "Our approach combines the tactile beauty of traditional materials with the invisible precision of modern automation."}
               </p>
@@ -157,19 +157,19 @@ const ServiceDetails = ({ service }) => {
       </section>
 
       {/* 3. CORE FEATURES SECTION */}
-      <section className="py-32 relative">
+      <section className="py-16 md:py-32 relative">
         <Container>
-          <div className="flex items-center gap-4 mb-20">
-            <div className="h-[1px] w-12 bg-[#C5A059]" />
-            <h2 className="text-3xl font-serif">
+          <div className="flex items-center gap-4 mb-10 md:mb-20">
+            <div className="h-[1px] w-8 md:w-12 bg-[#C5A059] shrink-0" />
+            <h2 className="text-2xl md:text-3xl font-serif">
               {title} <span className="italic opacity-70">Capabilities</span>
             </h2>
           </div>
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {defaultFeatures.map((f, i) => (
               <div
                 key={i}
-                className="p-8 border border-white/10 rounded-2xl bg-white/[0.02] backdrop-blur-sm"
+                className="p-6 md:p-8 border border-white/10 rounded-2xl bg-white/[0.02] backdrop-blur-sm"
               >
                 <Check className="text-[#C5A059] mb-4" size={20} />
                 <h4 className="font-serif text-lg">{f}</h4>
@@ -202,7 +202,7 @@ const ServiceDetails = ({ service }) => {
       )}
 
       {/* 5. SENSORY IMAGE BREAK */}
-      <section className="relative h-[60vh] w-full overflow-hidden">
+      <section className="relative h-[40vh] md:h-[60vh] w-full overflow-hidden">
         <motion.img
           initial={{ scale: 1.2 }}
           whileInView={{ scale: 1 }}
@@ -218,21 +218,21 @@ const ServiceDetails = ({ service }) => {
         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/60 via-transparent to-black/60">
           <div className="text-center">
             <Camera className="text-[#C5A059] mx-auto mb-4 opacity-60" size={32} />
-            <h3 className="text-3xl font-serif italic tracking-widest">Mastery in Every Frame</h3>
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-serif italic tracking-widest px-4">Mastery in Every Frame</h3>
           </div>
         </div>
       </section>
 
       {/* 5. THE PROCESS */}
-      <section className="py-32 relative">
+      <section className="py-16 md:py-32 relative">
         <Container>
-          <div className="grid md:grid-cols-4 gap-0 border border-white/10 rounded-[40px] overflow-hidden bg-white/[0.02] backdrop-blur-sm">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-0 border border-white/10 rounded-3xl md:rounded-[40px] overflow-hidden bg-white/[0.02] backdrop-blur-sm">
             {processSteps.map((step, i) => (
               <div
                 key={i}
-                className="p-10 md:p-12 border-r border-white/10 last:border-0"
+                className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 last:border-b-0 md:last:border-r-0"
               >
-                <span className="text-[#C5A059] font-serif text-4xl opacity-25 block mb-6">
+                <span className="text-[#C5A059] font-serif text-3xl md:text-4xl opacity-25 block mb-4 md:mb-6">
                   0{i + 1}
                 </span>
                 <h4 className="text-xl font-serif mb-4">{step.title}</h4>
@@ -244,18 +244,18 @@ const ServiceDetails = ({ service }) => {
       </section>
 
       {/* 6. CALL TO ACTION */}
-      <section className="py-40 relative">
+      <section className="py-20 md:py-40 relative">
         <Container>
-          <div className="relative p-16 md:p-24 rounded-[60px] overflow-hidden bg-gradient-to-br from-[#C5A059] to-[#af944d] text-black text-center shadow-2xl">
-            <h2 className="text-5xl md:text-7xl font-serif leading-none mb-6">
+          <div className="relative p-8 sm:p-12 md:p-24 rounded-3xl md:rounded-[60px] overflow-hidden bg-gradient-to-br from-[#C5A059] to-[#af944d] text-black text-center shadow-2xl">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif leading-none mb-6">
               Ready to <br />
               <span className="italic">Begin?</span>
             </h2>
-            <div className="flex justify-center gap-4 mt-10">
+            <div className="flex justify-center gap-4 mt-8 md:mt-10">
               <Link
                 to="/contact"
                 className="
-                  px-12 py-5 bg-black text-white rounded-full
+                  px-8 py-4 md:px-12 md:py-5 bg-black text-white rounded-full
                   font-bold uppercase text-[10px] tracking-widest
                   hover:bg-white hover:text-black transition-all duration-500
                 "

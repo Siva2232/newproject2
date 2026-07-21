@@ -37,7 +37,7 @@ const FeaturedProjects = () => {
   return (
     <section 
       ref={containerRef} 
-      className="relative py-32 md:py-48 overflow-hidden bg-[#00162E] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#003B75] via-[#002D5A] to-[#00162E]"
+      className="relative py-20 md:py-48 overflow-hidden bg-[#00162E] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#003B75] via-[#002D5A] to-[#00162E]"
     >
       {/* 1. BACKGROUND KINETICS - Subtler "Studio" watermark */}
       <motion.div 
@@ -56,7 +56,7 @@ const FeaturedProjects = () => {
         
         {/* 2. HEADER */}
         {/* 2. HEADER */}
-<div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-32 md:mb-48 gap-12">
+<div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 md:mb-48 gap-8 md:gap-12">
   <motion.div
     initial={{ opacity: 0, x: -20 }}
     whileInView={{ opacity: 1, x: 0 }}
@@ -71,7 +71,7 @@ const FeaturedProjects = () => {
       </span>
     </div>
     
-    <h2 className="text-5xl md:text-8xl font-serif text-white leading-[1.05] mb-8 tracking-tighter">
+    <h2 className="text-4xl sm:text-5xl md:text-8xl font-serif text-white leading-[1.05] mb-6 md:mb-8 tracking-tighter">
       Signature <span className="italic font-light opacity-95 text-[#C5A059]">Products</span>
     </h2>
 
@@ -80,7 +80,7 @@ const FeaturedProjects = () => {
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
-      className="text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-xl border-l border-[#C5A059]/30 pl-6"
+      className="text-base md:text-xl text-white/60 font-light leading-relaxed max-w-xl border-l border-[#C5A059]/30 pl-4 md:pl-6"
     >
      Premium materials designed to transform ordinary spaces into extraordinary interiors.
     </motion.p>
@@ -88,7 +88,7 @@ const FeaturedProjects = () => {
 </div>
 
         {/* 3. THE GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-32 md:gap-y-0 relative">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-16 md:gap-y-0 relative">
           
           <motion.div style={{ y: yLeft1 }} className="md:col-span-7 lg:col-span-6 z-10">
             <Link to={`/products/${Number(LIVE_PROJECTS[0].id)}`} aria-label={`View ${LIVE_PROJECTS[0].title}`} className="block">
@@ -115,14 +115,14 @@ const FeaturedProjects = () => {
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="mt-48 md:mt-72 flex justify-between items-center border-t border-white/5 pt-16"
+          className="mt-24 md:mt-72 flex justify-between items-center border-t border-white/5 pt-10 md:pt-16"
         >
-          <Link to="/services" className="flex items-center gap-12 group cursor-pointer">
-             <div className="relative flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full border border-white/10 group-hover:border-[#C5A059] transition-all duration-700 ease-out group-hover:scale-110" />
+          <Link to="/services" className="flex items-center gap-5 md:gap-12 group cursor-pointer">
+             <div className="relative flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/10 group-hover:border-[#C5A059] transition-all duration-700 ease-out group-hover:scale-110" />
                 <span className="absolute text-white group-hover:text-[#C5A059] transition-colors duration-300">↗</span>
              </div>
-             <p className="text-2xl font-serif text-white/40 group-hover:text-white transition-all duration-500">
+             <p className="text-xl md:text-2xl font-serif text-white/40 group-hover:text-white transition-all duration-500">
                 See All <span className="italic text-[#C5A059]/60 group-hover:text-[#C5A059]">Products</span>
              </p>
           </Link>

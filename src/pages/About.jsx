@@ -78,7 +78,7 @@ const About = () => {
 
           <motion.div style={{ x }} className={`flex ${isMobile ? "flex-col" : "flex-row"}`}>
             {aboutSections.map((item, index) => (
-              <div key={index} className="w-screen h-screen flex-shrink-0 flex items-center justify-center px-4 sm:px-6 lg:px-24 py-20 lg:py-0">
+              <div key={index} className={`${isMobile ? "w-full min-h-0 py-12" : "w-screen h-screen py-20 lg:py-0"} flex-shrink-0 flex items-center justify-center px-4 sm:px-6 lg:px-24`}>
                 <Container>
                   <div className="grid lg:grid-cols-2 gap-8 lg:gap-24 items-center">
                     <motion.div initial={{ clipPath: "inset(0% 100% 0% 0%)" }} whileInView={{ clipPath: "inset(0% 0% 0% 0%)" }} transition={{ duration: 1.2, ease: [0.77, 0, 0.175, 1] }} viewport={{ once: true }} className="relative aspect-video lg:aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-white/10">
@@ -115,8 +115,8 @@ const About = () => {
             ))}
           </motion.div>
 
-          {/* Progress Bar Container */}
-          <div className="absolute bottom-8 lg:bottom-12 left-0 right-0 px-6 flex flex-col items-center justify-center gap-4 lg:gap-8 pointer-events-none">
+          {/* Progress Bar Container — hidden on mobile where sections stack vertically */}
+          <div className="hidden lg:flex absolute bottom-8 lg:bottom-12 left-0 right-0 px-6 flex-col items-center justify-center gap-4 lg:gap-8 pointer-events-none">
             <div className="h-[2px] w-full max-w-[200px] lg:max-w-xs bg-white/10 relative overflow-hidden rounded-full">
               <motion.div style={{ scaleX: scrollYProgress }} className="absolute inset-0 bg-[#C5A059] origin-left shadow-[0_0_10px_rgba(197,160,89,0.5)]" />
             </div>
@@ -126,14 +126,14 @@ const About = () => {
       </section>
 
       {/* 2. WHY CHOOSE HOME TECH SOLUTIONS */}
-      <section className="py-32 relative bg-[#00162E] border-t border-white/5">
+      <section className="py-16 md:py-32 relative bg-[#00162E] border-t border-white/5">
         <Container>
-          <div className="text-center mb-24">
+          <div className="text-center mb-12 md:mb-24">
             <h4 className="text-[#C5A059] text-xs font-bold tracking-[0.6em] uppercase mb-6">The Advantage</h4>
-            <h2 className="text-4xl md:text-7xl font-light text-white tracking-tight">Why Choose <span className="italic font-serif text-[#fff3ad]">Home Tech</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-7xl font-light text-white tracking-tight">Why Choose <span className="italic font-serif text-[#fff3ad]">Home Tech</span></h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8">
             {[
               { icon: <Shield size={32} />, title: "Certified Security", desc: "Enterprise-grade encryption for your home network and personal data." },
               { icon: <Zap size={32} />, title: "Seamless Motion", desc: "Zero-latency automation that anticipates your daily routines perfectly." },
@@ -143,9 +143,9 @@ const About = () => {
               <motion.div 
                 key={i}
                 whileHover={{ y: -12, backgroundColor: "rgba(255,255,255,0.08)" }}
-                className="p-10 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-[#C5A059]/40 transition-all duration-500 group"
+                className="p-8 md:p-10 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-[#C5A059]/40 transition-all duration-500 group"
               >
-                <div className="text-[#C5A059] mb-8 group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_8px_rgba(197,160,89,0.3)]">{feature.icon}</div>
+                <div className="text-[#C5A059] mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_8px_rgba(197,160,89,0.3)]">{feature.icon}</div>
                 <h3 className="text-xl font-serif text-white mb-4 tracking-tight">{feature.title}</h3>
                 <p className="text-white/40 text-sm leading-relaxed font-light">{feature.desc}</p>
               </motion.div>
@@ -155,23 +155,23 @@ const About = () => {
       </section>
 
       {/* 3. PREFERRED PARTNER / CTA SECTION */}
-      <section className="py-32 relative overflow-hidden bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-[#003B75]/40 to-transparent">
+      <section className="py-16 md:py-32 relative overflow-hidden bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-[#003B75]/40 to-transparent">
         <Container>
-          <div className="rounded-[3rem] bg-gradient-to-br from-white/10 via-white/[0.02] to-transparent border border-white/10 p-12 md:p-24 relative overflow-hidden flex flex-col items-center text-center backdrop-blur-sm">
+          <div className="rounded-3xl md:rounded-[3rem] bg-gradient-to-br from-white/10 via-white/[0.02] to-transparent border border-white/10 p-8 sm:p-12 md:p-24 relative overflow-hidden flex flex-col items-center text-center backdrop-blur-sm">
              <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]" />
              
              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative z-10">
-                <h2 className="text-4xl md:text-7xl font-light text-white mb-8 leading-tight tracking-tighter">
+                <h2 className="text-3xl sm:text-4xl md:text-7xl font-light text-white mb-6 md:mb-8 leading-tight tracking-tighter">
                   Ready to evolve <br />
                   <span className="italic font-serif text-[#C5A059]">your living space?</span>
                 </h2>
-                <p className="text-white/50 text-lg mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+                <p className="text-white/50 text-base md:text-lg mb-8 md:mb-12 max-w-2xl mx-auto font-light leading-relaxed">
                   Join the elite circle of homeowners who trust Home Tech Solutions for bespoke architectural intelligence.
                 </p>
                 <motion.button 
                   whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(197,160,89,0.3)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-14 py-5 bg-[#C5A059] text-[#00162E] rounded-full font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#fff3ad] transition-all duration-300"
+                  className="px-8 py-4 md:px-14 md:py-5 bg-[#C5A059] text-[#00162E] rounded-full font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#fff3ad] transition-all duration-300"
                 >
                   Start Your Consultation
                 </motion.button>

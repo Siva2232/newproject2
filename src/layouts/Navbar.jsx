@@ -32,9 +32,10 @@ const Navbar = () => {
     { name: "Home", path: "/", id: "01" },
     { name: "Projects", path: "/projects", id: "02" },
     { name: "Our Expertise", path: "/services", id: "03" },
-    { name: "Gallery", path: "/gallery", id: "04" },
-    { name: "Our Story", path: "/about", id: "05" },
-    { name: "Contact us", path: "/contact", id: "06" },
+    { name: "EV Infra", path: "/ev-infra", id: "04" },
+    { name: "Gallery", path: "/gallery", id: "05" },
+    { name: "Our Story", path: "/about", id: "06" },
+    { name: "Contact us", path: "/contact", id: "07" },
   ];
 
   return (
@@ -74,10 +75,10 @@ const Navbar = () => {
           </Link>
 
           {/* 2. DESKTOP NAVIGATION */}
-          <ul className="hidden lg:flex items-center gap-2">
+          <ul className="hidden lg:flex items-center gap-0 xl:gap-1">
             {navLinks.map((link) => (
-              <li key={link.name} className="relative px-5 py-2" onMouseEnter={() => setIsHovered(link.name)} onMouseLeave={() => setIsHovered(null)}>
-                <Link to={link.path} className={`relative z-10 text-[10px] uppercase tracking-[0.4em] font-bold transition-colors duration-500 ${location.pathname === link.path || isHovered === link.name ? "text-white" : "text-white/40"}`}>
+              <li key={link.name} className="relative px-2.5 xl:px-4 py-2" onMouseEnter={() => setIsHovered(link.name)} onMouseLeave={() => setIsHovered(null)}>
+                <Link to={link.path} className={`relative z-10 text-[9px] xl:text-[10px] uppercase tracking-[0.18em] xl:tracking-[0.28em] font-bold transition-colors duration-500 whitespace-nowrap ${location.pathname === link.path || isHovered === link.name ? "text-white" : "text-white/40"}`}>
                   {link.name}
                 </Link>
                 <AnimatePresence>

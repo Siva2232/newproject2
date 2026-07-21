@@ -110,7 +110,7 @@ const Testimonials = () => {
   const doubledReviews = [...REVIEWS, ...REVIEWS];
 
   return (
-    <section className="relative py-40 bg-[#FFFFFF] overflow-hidden">
+    <section className="relative py-20 md:py-40 bg-[#FFFFFF] overflow-hidden">
       {/* Kinetic watermark */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] flex items-center">
         <h2 className="text-[30vw] font-serif italic text-stone-900 whitespace-nowrap">
@@ -123,7 +123,7 @@ const Testimonials = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-24 relative z-10"
+          className="mb-12 md:mb-24 relative z-10"
         >
           <SectionTitle
             title="Client Stories"
@@ -138,7 +138,7 @@ const Testimonials = () => {
           <div
             ref={containerRef}
             className="
-              flex gap-8 lg:gap-12 
+              flex gap-4 sm:gap-8 lg:gap-12 
               will-change-transform
             "
             style={{ transform: "translateX(0px)" }}
@@ -147,9 +147,9 @@ const Testimonials = () => {
               <motion.div
                 key={i}
                 className="
-                  min-w-[320px] md:min-w-[480px] lg:min-w-[550px] 
+                  min-w-[260px] max-w-[85vw] sm:min-w-[380px] md:min-w-[480px] lg:min-w-[550px] 
                   flex flex-col justify-between 
-                  p-8 lg:p-12 
+                  p-6 sm:p-8 lg:p-12 
                   bg-[#F9F9F7] 
                   border border-stone-100 
                   relative group 
@@ -164,7 +164,7 @@ const Testimonials = () => {
                 </span>
 
                 <div className="relative z-10">
-                  <p className="text-lg md:text-xl lg:text-2xl font-serif text-stone-800 leading-tight mb-10 lg:mb-12 italic tracking-tight">
+                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-serif text-stone-800 leading-snug mb-8 lg:mb-12 italic tracking-tight">
                     "{item.quote}"
                   </p>
 
@@ -191,7 +191,7 @@ const Testimonials = () => {
         </div>
 
         {/* Optional hint (can be removed if auto-movement is enough) */}
-        <div className="mt-16 flex justify-center items-center gap-3 text-stone-400 text-[10px] uppercase tracking-[0.4em]">
+        <div className="mt-10 md:mt-16 flex justify-center items-center gap-3 text-stone-400 text-[10px] uppercase tracking-[0.4em] text-center">
           <span>Client Testimonials</span>
           <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] animate-pulse" />
         </div>

@@ -13,6 +13,7 @@ import GalleryPage from "../pages/GalleryPage";
 import Contact from "../pages/Contact";
 import SmartLivingPage from "../pages/SmartLiving";
 import SmartLivingDetails from "../pages/SmartLivingDetails";
+import EvInfra from "../pages/EvInfra";
 import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
       { path: "products/:id", element: <ProductDetailsPage /> },
       { path: "smart-living", element: <SmartLivingPage /> },
       { path: "smart-living/:id", element: <SmartLivingDetails /> },
+      { path: "ev-infra", element: <EvInfra /> },
       { path: "projects", element: <Projects /> },
       { path: "projects/:id", element: <ProjectDetails /> },
       { path: "gallery", element: <GalleryPage /> },

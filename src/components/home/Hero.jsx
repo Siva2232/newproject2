@@ -161,7 +161,7 @@ const Hero = () => {
         </AnimatePresence>
 
         {/* Text content */}
-        <div className="absolute inset-0 z-20 flex flex-col justify-center px-8 md:px-24 pointer-events-none">
+        <div className="absolute inset-0 z-20 flex flex-col justify-center px-5 sm:px-8 md:px-24 pointer-events-none">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeProject.id}
@@ -174,22 +174,22 @@ const Hero = () => {
                 {activeProject.label}
               </span>
 
-              <h1 className="text-3xl md:text-7xl lg:text-7xl font-serif text-white mb-6 leading-[0.9] tracking-tighter italic">
+              <h1 className="text-3xl sm:text-4xl md:text-7xl font-serif text-white mb-4 md:mb-6 leading-[1] md:leading-[0.9] tracking-tighter italic">
                 {activeProject.title}
               </h1>
 
-              <p className="max-w-md text-stone-400 text-md md:text-2xl font-light leading-relaxed tracking-wide border-l border-[#C5A059]/50 pl-6">
+              <p className="max-w-[85%] sm:max-w-md text-stone-400 text-sm sm:text-base md:text-2xl font-light leading-relaxed tracking-wide border-l border-[#C5A059]/50 pl-4 sm:pl-6">
                 {activeProject.desc}
               </p>
 
               {/* Gallery thumbnails (only shown if there are images) */}
               {activeProject.gallery.length > 0 && (
-                <motion.div className="flex gap-3 mt-8 md:mt-10">
+                <motion.div className="flex flex-wrap gap-2 sm:gap-3 mt-6 sm:mt-8 md:mt-10">
                   {activeProject.gallery.map((img, idx) => (
                     <motion.img
                       key={idx}
                       src={img}
-                      className={`w-20 sm:w-24 md:w-28 h-14 sm:h-16 md:h-20 object-cover rounded-md transition-all duration-300 ${
+                      className={`w-16 sm:w-24 md:w-28 h-12 sm:h-16 md:h-20 object-cover rounded-md transition-all duration-300 ${
                         !showSlider && galleryIndex === idx
                           ? "opacity-100 ring-2 ring-[#C5A059]/70 scale-105 shadow-lg"
                           : "opacity-65 hover:opacity-90 hover:scale-105"
@@ -214,11 +214,11 @@ const Hero = () => {
             className="absolute inset-y-0 w-0 z-40 cursor-ew-resize flex items-center justify-center"
           >
             <div className="group relative flex items-center justify-center">
-              <div className="absolute h-24 w-24 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm transition-all group-hover:scale-125" />
+              <div className="absolute h-16 w-16 md:h-24 md:w-24 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm transition-all group-hover:scale-125" />
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="h-14 w-14 rounded-full border border-[#C5A059] bg-[#0A0A0A] flex flex-col items-center justify-center gap-1 shadow-[0_0_30px_rgba(197,160,89,0.3)] z-10"
+                className="h-10 w-10 md:h-14 md:w-14 rounded-full border border-[#C5A059] bg-[#0A0A0A] flex flex-col items-center justify-center gap-1 shadow-[0_0_30px_rgba(197,160,89,0.3)] z-10"
               >
                 <div className="w-4 h-[1px] bg-white" />
                 <div className="w-4 h-[1px] bg-white" />
@@ -229,7 +229,7 @@ const Hero = () => {
       </div>
 
       {/* Bottom selector - shows project.title */}
-      <div className="h-32 md:h-40 bg-white flex items-center px-6 md:px-12 gap-6 overflow-x-auto no-scrollbar relative z-[60] border-t border-white/5">
+      <div className="h-28 sm:h-32 md:h-40 bg-white flex items-center px-4 sm:px-6 md:px-12 gap-4 sm:gap-6 overflow-x-auto no-scrollbar relative z-[60] border-t border-white/5">
         {PROJECTS.map((project) => (
           <button
             key={project.id}
@@ -239,8 +239,8 @@ const Hero = () => {
             <div
               className={`relative transition-all duration-700 overflow-hidden ${
                 activeProject.id === project.id
-                  ? "w-48 md:w-72 h-20 md:h-24 opacity-100 shadow-xl"
-                  : "w-16 md:w-24 h-16 md:h-20 opacity-35 grayscale"
+                  ? "w-36 sm:w-48 md:w-72 h-16 sm:h-20 md:h-24 opacity-100 shadow-xl"
+                  : "w-14 sm:w-16 md:w-24 h-14 sm:h-16 md:h-20 opacity-35 grayscale"
               }`}
             >
               <img

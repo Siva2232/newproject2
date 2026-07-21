@@ -21,7 +21,7 @@ const ServicesPreview = () => {
   return (
     <section 
       ref={containerRef} 
-      className="relative py-40 bg-[#F9F9F7] overflow-hidden"
+      className="relative py-20 md:py-40 bg-[#F9F9F7] overflow-hidden"
     >
       {/* 1. KINETIC BACKGROUND TYPOGRAPHY */}
       <motion.div 
@@ -47,7 +47,7 @@ const ServicesPreview = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* 3. SECTION HEADER */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-24 gap-8">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -58,7 +58,7 @@ const ServicesPreview = () => {
             <span className="text-[#C5A059] uppercase tracking-[0.5em] text-[10px] font-bold mb-4 block">
               Capabilities
             </span>
-            <h2 className="text-5xl md:text-7xl font-serif text-stone-900 leading-[1.1]">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif text-stone-900 leading-[1.1]">
               Signature <br /> 
               <span className="italic font-light">Service Works</span>
             </h2>
@@ -104,8 +104,8 @@ const ServicesPreview = () => {
         </motion.div>
 
         {/* 5. DYNAMIC FOOTER */}
-        <div className="mt-32 pt-12 border-t border-stone-200 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex gap-12">
+        <div className="mt-16 md:mt-32 pt-8 md:pt-12 border-t border-stone-200 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex gap-8 md:gap-12">
             <div>
               <p className="text-[10px] uppercase text-stone-400 mb-2">Efficiency</p>
               <p className="text-xl font-serif">100%</p>
@@ -120,7 +120,7 @@ const ServicesPreview = () => {
           <motion.button 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group flex items-center gap-4 bg-stone-900 text-white px-10 py-5 rounded-full overflow-hidden relative"
+            className="group flex items-center gap-4 bg-stone-900 text-white px-8 py-4 md:px-10 md:py-5 rounded-full overflow-hidden relative"
           >
             <span className="relative z-10 uppercase text-[10px] tracking-[0.3em] font-bold">See All Services</span>
             <div className="absolute inset-0 bg-[#C5A059] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />

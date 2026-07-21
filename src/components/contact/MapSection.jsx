@@ -6,7 +6,7 @@ const MapSection = () => {
   const mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2157071441!2d-73.9878441!3d40.7579747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480293%3A0x5119944466939b6a!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus";
 
   return (
-    <div className="relative h-[600px] w-full bg-[#050505] overflow-hidden group">
+    <div className="relative h-[520px] md:h-[600px] w-full bg-[#050505] overflow-hidden group">
       
       {/* 1. TOP & BOTTOM BLENDING GRADIENTS */}
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#050505] to-transparent z-20 pointer-events-none" />
@@ -45,14 +45,14 @@ const MapSection = () => {
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="absolute bottom-12 left-6 md:left-12 z-30 max-w-xs w-full"
+        className="absolute bottom-8 md:bottom-12 left-4 right-4 md:left-12 md:right-auto z-30 max-w-xs"
       >
-        <div className="bg-black/60 backdrop-blur-xl border border-white/10 p-8 rounded-[32px] shadow-2xl overflow-hidden relative group/card">
+        <div className="bg-black/60 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-3xl md:rounded-[32px] shadow-2xl overflow-hidden relative group/card">
           {/* Animated background glow for card */}
           <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#af944d]/10 blur-3xl rounded-full transition-transform duration-700 group-hover/card:scale-150" />
           
           <div className="relative z-10">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-4 md:mb-6">
               <div className="p-2 bg-[#af944d] rounded-lg text-black">
                 <Navigation size={18} fill="currentColor" />
               </div>
@@ -60,7 +60,7 @@ const MapSection = () => {
             </div>
 
             <h4 className="text-xl font-light text-white mb-2">Global HQ</h4>
-            <p className="text-sm text-white/40 leading-relaxed mb-8">
+            <p className="text-sm text-white/40 leading-relaxed mb-6 md:mb-8">
               Suite 402, Technology Tower,<br />
               Manhattan, NY 10036
             </p>

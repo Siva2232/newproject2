@@ -1,18 +1,27 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Container from "../common/Container";
 import { Quote, MoveRight, ShieldCheck, Zap, PenTool, Users, Award } from "lucide-react"; 
 
 const AboutPreview = () => {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
 
-  const yImage = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const yContentRight = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  // Disable parallax on mobile — stacked columns overlap otherwise
+  const yImage = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 0 : -100]);
+  const yContentRight = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [50, -50]);
   const rotateDecorative = useTransform(scrollYProgress, [0, 1], [0, 15]);
 
   const curtainVariant = {
@@ -29,10 +38,10 @@ const AboutPreview = () => {
   ];
 
   return (
-    <section ref={containerRef} className="py-24 md:py-32 bg-[#F5F5F3] overflow-hidden">
+    <section ref={containerRef} className="py-16 md:py-32 bg-[#F5F5F3] overflow-hidden">
       <Container>
         {/* SECTION HEADER */}
-        <div className="mb-24 flex flex-col items-start max-w-4xl">
+        <div className="mb-14 md:mb-24 flex flex-col items-start max-w-4xl">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -41,7 +50,7 @@ const AboutPreview = () => {
             <div className="w-12 h-[1px] bg-[#C5A059]" />
             <span className="text-[#C5A059] uppercase text-[10px] font-bold tracking-[0.5em]">The Hometech Philosophy</span>
           </motion.div>
-          <h2 className="text-6xl md:text-8xl font-serif text-stone-900 leading-none">
+          <h2 className="text-4xl sm:text-6xl md:text-8xl font-serif text-stone-900 leading-none">
             Engineering <br /> <span className="italic font-light text-stone-400">Emotion.</span>
           </h2>
         </div>
@@ -64,10 +73,10 @@ const AboutPreview = () => {
                 alt="Modern Architecture" 
                 className="w-full h-full object-cover grayscale-[0.3]"
               />
-              <div className="absolute inset-0 bg-black/40 p-12 flex flex-col justify-end text-white">
-                <span className="text-[#C5A059] font-mono text-lg uppercase tracking-[0.3em] mb-4">01. Our Mission</span>
-                <h3 className="text-4xl font-serif mb-6 italic">The Art of Integration</h3>
-                <p className="text-white/80 font-light leading-relaxed text-lg max-w-md">
+              <div className="absolute inset-0 bg-black/40 p-6 sm:p-8 md:p-12 flex flex-col justify-end text-white">
+                <span className="text-[#C5A059] font-mono text-sm sm:text-base md:text-lg uppercase tracking-[0.3em] mb-3 md:mb-4">01. Our Mission</span>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-4 md:mb-6 italic">The Art of Integration</h3>
+                <p className="text-white/80 font-light leading-relaxed text-sm sm:text-base md:text-lg max-w-md">
                   Delivering complete construction and smart technology solutions that enhance the security and beauty of every space.
                 </p>
               </div>
@@ -82,18 +91,18 @@ const AboutPreview = () => {
           {/* RIGHT SIDE: VISION */}
           <motion.div 
             style={{ y: yContentRight }}
-            className="lg:col-span-6 lg:pl-20 flex flex-col justify-center"
+            className="lg:col-span-6 lg:pl-20 flex flex-col justify-center mt-4 lg:mt-0"
           >
-            <div className="relative p-10 md:p-16 bg-stone-900 text-white shadow-2xl overflow-hidden">
+            <div className="relative p-6 sm:p-10 md:p-16 bg-stone-900 text-white shadow-2xl overflow-hidden">
               <motion.div style={{ rotate: rotateDecorative }} className="absolute -top-10 -right-10 opacity-5">
                 <Quote size={200} />
               </motion.div>
 
               <div className="relative z-10">
-                <span className="text-[#C5A059] uppercase text-lg font-bold tracking-[0.5em] mb-8 block">02. Vision</span>
-                <h3 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">Defining the <br/><span className="italic text-[#C5A059]">Future</span> of Living.</h3>
+                <span className="text-[#C5A059] uppercase text-sm sm:text-base md:text-lg font-bold tracking-[0.5em] mb-6 md:mb-8 block">02. Vision</span>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-6 md:mb-8 leading-tight">Defining the <br/><span className="italic text-[#C5A059]">Future</span> of Living.</h3>
                 
-                <p className="text-stone-400 font-light leading-loose text-lg mb-10">
+                <p className="text-stone-400 font-light leading-loose text-base md:text-lg mb-8 md:mb-10">
                   To become the most trusted integrated home solutions brand across Bharath, creating smart, sustainable, and beautifully designed environments.
                 </p>
 
@@ -110,25 +119,25 @@ const AboutPreview = () => {
         </div>
 
         {/* WHY CHOOSE US SECTION (moved to end) */}
-        <div className="mb-15 mt-25">
+        <div className="mt-16 md:mt-24 lg:mt-32">
           {/* Heading + Centered Logo */}
-          <div className="text-center mb-16 relative ">
+          <div className="text-center mb-10 md:mb-16 relative ">
             <div className="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#C5A059]/10 mb-4">
               <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#C5A059] flex items-center justify-center text-white shadow-lg">
                 {/* You can replace this with your actual logo / SVG */}
                 <span className="text-2xl md:text-3xl font-bold">H</span>
               </div>
             </div>
-            <h3 className="text-4xl md:text-5xl font-serif text-stone-900 tracking-tight">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif text-stone-900 tracking-tight">
               Why Choose <span className="text-[#C5A059]">Hometech</span>
             </h3>
-            <p className="mt-4 text-stone-500 font-light text-lg max-w-2xl mx-auto">
+            <p className="mt-4 text-stone-500 font-light text-base md:text-lg max-w-2xl mx-auto px-2">
               Where quality, innovation, and customer satisfaction come together to build better living spaces
             </p>
           </div>
 
           {/* 5 Cards in a row on lg screens */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8 border-y border-stone-200 divide-y md:divide-y-0 lg:divide-x divide-stone-200">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-8 border-y border-stone-200 divide-y sm:divide-y-0 lg:divide-x divide-stone-200">
             {REASONS.map((item, i) => (
               <motion.div 
                 key={i}
@@ -136,7 +145,7 @@ const AboutPreview = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.7, ease: "easeOut" }}
-                className="group relative flex flex-col gap-6 py-12 px-6 md:px-8 transition-all duration-500 hover:bg-white hover:shadow-xl"
+                className="group relative flex flex-col gap-4 md:gap-6 py-8 md:py-12 px-5 md:px-8 transition-all duration-500 hover:bg-white hover:shadow-xl"
               >
                 {/* Decorative Number */}
                 <span className="absolute top-6 right-6 text-5xl md:text-6xl font-serif text-stone-100 group-hover:text-stone-200 transition-colors select-none pointer-events-none">

@@ -4,7 +4,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Loader from "../components/common/Loader";
+import EvLoader from "../components/common/EvLoader";
 import FloatingContact from "../components/common/FloatingContact";
+import FloatingEv from "../components/common/FloatingEv";
 
 const Layout = () => {
   const navigation = useNavigation();
@@ -41,7 +43,12 @@ const Layout = () => {
       <Navbar />
 
       <AnimatePresence mode="wait">
-        {isLoading && <Loader key="loader" />}
+        {isLoading &&
+          (location.pathname.startsWith("/ev-infra") ? (
+            <EvLoader key="ev-loader" />
+          ) : (
+            <Loader key="loader" />
+          ))}
       </AnimatePresence>
 
       <main className="min-h-screen">
@@ -61,6 +68,7 @@ const Layout = () => {
       </main>
 
       <FloatingContact />
+      <FloatingEv />
 
       <Footer />
     </>

@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const ProjectCard = ({ image, title, number, category }) => {
+  // Touch screens have no hover, so keep the revealed state always visible there
+  const [isTouch, setIsTouch] = useState(false);
+  useEffect(() => {
+    setIsTouch(window.matchMedia("(hover: none)").matches);
+  }, []);
+
   return (
     <motion.div
       initial="initial"
+      animate={isTouch ? "hover" : "initial"}
       whileHover="hover"
       className="relative w-full group cursor-pointer overflow-hidden bg-[#0A0A0A]"
     >
@@ -41,7 +48,7 @@ const ProjectCard = ({ image, title, number, category }) => {
         </div>
 
         {/* 3. FLOATING METADATA (Top Left) */}
-        <div className="absolute top-8 left-8 z-30 overflow-hidden">
+        <div className="absolute top-6 left-6 md:top-8 md:left-8 z-30 overflow-hidden">
           <motion.div
             variants={{
               initial: { y: -20, opacity: 0 },
@@ -66,7 +73,7 @@ const ProjectCard = ({ image, title, number, category }) => {
                 hover: { y: 0 }
               }}
               transition={{ duration: 0.6, ease: "circOut" }}
-              className="text-white text-3xl md:text-4xl font-serif italic tracking-tight"
+              className="text-white text-2xl sm:text-3xl md:text-4xl font-serif italic tracking-tight px-4 text-center"
             >
               {title}
             </motion.h3>

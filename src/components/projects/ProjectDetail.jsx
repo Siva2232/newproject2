@@ -26,7 +26,7 @@ const ProjectDetail = ({ project }) => {
   };
 
   return (
-    <div className="bg-[#F9F9F7] min-h-screen pb-32 overflow-hidden">
+    <div className="bg-[#F9F9F7] min-h-screen pb-20 md:pb-32 overflow-hidden">
       
       {/* 1. IMMERSIVE HERO */}
       <section className="relative h-[90dvh] w-full overflow-hidden bg-stone-900">
@@ -52,10 +52,10 @@ const ProjectDetail = ({ project }) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 1 }}
-              className="text-6xl md:text-9xl font-serif text-white leading-none tracking-tighter"
+              className="text-4xl sm:text-6xl md:text-9xl font-serif text-white leading-none tracking-tighter"
             >
               {data.title.split(' ')[0]} <br />
-              <span className="italic font-light ml-8 md:ml-24">{data.title.split(' ')[1]}</span>
+              <span className="italic font-light ml-4 sm:ml-8 md:ml-24">{data.title.split(' ')[1]}</span>
             </motion.h1>
           </motion.div>
         </Container>
@@ -64,7 +64,7 @@ const ProjectDetail = ({ project }) => {
       {/* 2. PROJECT METADATA BAR */}
       <div className="border-b border-stone-200 bg-white sticky top-0 z-30">
         <Container>
-          <div className="grid grid-cols-2 md:grid-cols-4 py-8 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 py-6 md:py-8 gap-4 md:gap-8">
             {[
               { label: "Location", value: data.location },
               { label: "Year", value: data.year },
@@ -81,17 +81,17 @@ const ProjectDetail = ({ project }) => {
       </div>
 
       {/* 3. NARRATIVE SECTION */}
-      <section className="py-32">
+      <section className="py-16 md:py-32">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-start">
             <div className="lg:col-span-5">
-              <h2 className="text-4xl font-serif text-stone-900 mb-8 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-serif text-stone-900 mb-6 md:mb-8 leading-tight">
                 The <span className="italic">Vision</span> Behind <br /> the Sanctuary
               </h2>
               <div className="w-20 h-[1px] bg-[#C5A059] mb-8" />
             </div>
             <div className="lg:col-span-7">
-              <p className="text-xl text-stone-600 font-light leading-relaxed mb-8">
+              <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed mb-8">
                 {data.description}
               </p>
               <p className="text-stone-500 font-light leading-relaxed">
@@ -103,9 +103,9 @@ const ProjectDetail = ({ project }) => {
       </section>
 
       {/* 4. ASYMMETRIC MASONRY GALLERY */}
-      <section className="pb-32">
+      <section className="pb-16 md:pb-32">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
             {/* Main Feature Image */}
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
@@ -131,13 +131,13 @@ const ProjectDetail = ({ project }) => {
       </section>
 
       {/* 5. NEXT PROJECT NAVIGATION */}
-      <footer className="py-20 border-t border-stone-200">
+      <footer className="py-14 md:py-20 border-t border-stone-200">
         <Container>
           <div className="flex flex-col items-center text-center">
             <span className="text-[10px] uppercase tracking-[0.5em] text-stone-400 mb-6">Next Project</span>
             <motion.h3 
               whileHover={{ scale: 1.05 }}
-              className="text-5xl md:text-7xl font-serif text-stone-900 hover:text-[#C5A059] transition-colors cursor-pointer"
+              className="text-4xl sm:text-5xl md:text-7xl font-serif text-stone-900 hover:text-[#C5A059] transition-colors cursor-pointer"
             >
               Obsidian Loft ↗
             </motion.h3>

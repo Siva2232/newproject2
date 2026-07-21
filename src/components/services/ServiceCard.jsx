@@ -5,7 +5,7 @@ const ServiceCard = ({ title, number, tag, image }) => {
   return (
     <motion.div
       whileHover={{ y: -10 }}
-      className="relative group h-[450px] w-full bg-[#1A1A1A] overflow-hidden cursor-pointer"
+      className="relative group h-[380px] sm:h-[450px] w-full bg-[#1A1A1A] overflow-hidden cursor-pointer"
     >
       {/* 1. THE REVEAL IMAGE (Visible on Hover) */}
       <div className="absolute inset-0 z-0">
@@ -18,7 +18,7 @@ const ServiceCard = ({ title, number, tag, image }) => {
       </div>
 
       {/* 2. CARD CONTENT */}
-      <div className="relative z-10 h-full p-8 md:p-12 flex flex-col justify-between">
+      <div className="relative z-10 h-full p-6 sm:p-8 md:p-12 flex flex-col justify-between">
         
         {/* Top Section: Number & Tag */}
         <div className="flex justify-between items-start">
@@ -41,13 +41,13 @@ const ServiceCard = ({ title, number, tag, image }) => {
             className="w-12 h-[2px] bg-[#C5A059] mb-6 origin-left transition-all duration-500 group-hover:w-full" 
           />
           
-          <h3 className="text-3xl md:text-4xl font-serif text-white mb-4 leading-tight group-hover:text-[#C5A059] transition-colors duration-500">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white mb-4 leading-tight group-hover:text-[#C5A059] transition-colors duration-500">
             {title}
           </h3>
 
-          {/* This part "slides up" on hover */}
-          <div className="h-0 group-hover:h-20 transition-all duration-500 overflow-hidden">
-            <p className="text-stone-400 text-sm leading-relaxed mb-6 max-w-[280px]">
+          {/* Always visible on touch screens (no hover), slides up on desktop */}
+          <div className="h-auto md:h-0 md:group-hover:h-20 transition-all duration-500 overflow-hidden">
+            <p className="text-stone-400 text-sm leading-relaxed mb-4 md:mb-6 max-w-[280px]">
               High-end curated interior design solutions tailored to your architectural vision and lifestyle.
             </p>
           </div>

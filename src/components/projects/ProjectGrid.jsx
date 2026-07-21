@@ -8,7 +8,7 @@ const ProjectGrid = ({ projects }) => {
       {/* 1. MASONRY-STYLE GRID CONTAINER */}
       <motion.div 
         layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-12"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 md:gap-y-20 gap-x-8 lg:gap-x-12"
       >
         <AnimatePresence mode="popLayout">
           {projects.map((project, index) => (

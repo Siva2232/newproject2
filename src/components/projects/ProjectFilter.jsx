@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 
 const ProjectFilter = ({ categories, active, setActive, projectCounts = {} }) => {
   return (
-    <div className="relative flex justify-center mb-20 px-4">
+    <div className="relative flex justify-center mb-14 md:mb-20 px-4">
       {/* 1. FILTER CONTAINER */}
-      <nav className="relative flex flex-wrap justify-center items-center gap-2 md:gap-8 p-2 border border-white/10 rounded-full bg-[#0F0F0F]/50 backdrop-blur-xl">
+      <nav className="relative flex flex-wrap justify-center items-center gap-1 md:gap-8 p-2 border border-white/10 rounded-3xl md:rounded-full bg-[#0F0F0F]/50 backdrop-blur-xl">
         
         {categories.map((cat, i) => {
           const isActive = active === cat;
@@ -14,7 +14,7 @@ const ProjectFilter = ({ categories, active, setActive, projectCounts = {} }) =>
             <button
               key={i}
               onClick={() => setActive(cat)}
-              className={`relative px-6 py-3 text-[10px] md:text-xs uppercase tracking-[0.3em] font-bold transition-colors duration-500 outline-none
+              className={`relative px-4 py-2.5 md:px-6 md:py-3 text-[10px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.3em] font-bold transition-colors duration-500 outline-none
                 ${isActive ? "text-black" : "text-stone-500 hover:text-white"}`}
             >
               {/* 2. THE MAGNETIC PILL (Animated Background) */}

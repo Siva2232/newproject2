@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Instagram, Twitter, Linkedin, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.jpg";
+import servicesData from "../data/servicesData";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,8 +15,12 @@ const Footer = () => {
   const smoothScale = useSpring(logoScale, { stiffness: 100, damping: 30 });
 
   const footerLinks = {
-    services: ["Smart Home Automation", "Home Theater", "Lighting Design", "Security Systems"],
-    studio: ["Our Story", "Tech Philosophy", "Careers", "Journal"],
+    studio: [
+      { name: "Our Story", path: "/about" },
+      { name: "Projects", path: "/projects" },
+      { name: "Gallery", path: "/gallery" },
+      { name: "Contact Us", path: "/contact" },
+    ],
     legal: ["Privacy Policy", "Terms of Service"],
   };
 
@@ -66,17 +71,18 @@ const Footer = () => {
               Where Every Building Solution Comes Together
             </p>
 
-            <div className="flex gap-6">
+            <div className="flex gap-4">
               <motion.a
                 href="https://www.instagram.com/hometechsolutionsstudio?igsh=MWI0bmY1c3Q0NGdybw=="
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ y: -3 }}
-                className="text-gray-400 hover:text-[#C5A059] transition-colors"
+                whileHover={{ y: -3, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-12 h-12 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#C5A059] hover:border-[#C5A059] shadow-sm hover:shadow-[0_8px_20px_rgba(197,160,89,0.35)] transition-all duration-300"
                 aria-label="Instagram"
                 title="Instagram"
               >
-                <Instagram size={16} />
+                <Instagram size={20} />
               </motion.a>
 
               {/* <motion.a
@@ -107,12 +113,13 @@ const Footer = () => {
                 href="https://www.facebook.com/profile.php?id=61576541962910"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ y: -3 }}
-                className="text-gray-400 hover:text-[#C5A059] transition-colors"
+                whileHover={{ y: -3, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-12 h-12 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#C5A059] hover:border-[#C5A059] shadow-sm hover:shadow-[0_8px_20px_rgba(197,160,89,0.35)] transition-all duration-300"
                 aria-label="Facebook"
                 title="Facebook"
               >
-                <Facebook size={16} />
+                <Facebook size={20} />
               </motion.a>
             </div>
           </div>
@@ -122,13 +129,24 @@ const Footer = () => {
             <div>
               <h4 className="text-[#C5A059] text-[10px] uppercase tracking-[0.4em] font-bold mb-8">Expertise</h4>
               <ul className="space-y-4">
-                {footerLinks.services.map((link) => (
-                  <li key={link}>
-                    <Link to="#" className="text-gray-500 hover:text-black text-sm font-light transition-all duration-500 hover:pl-2">
-                      {link}
+                {servicesData.slice(0, 6).map((service) => (
+                  <li key={service.id}>
+                    <Link
+                      to={`/services/${service.id}`}
+                      className="text-gray-500 hover:text-black text-sm font-light transition-all duration-500 hover:pl-2"
+                    >
+                      {service.title}
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    to="/services"
+                    className="text-[#C5A059] hover:text-black text-sm font-medium transition-all duration-500 hover:pl-2"
+                  >
+                    View All Services →
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -136,9 +154,9 @@ const Footer = () => {
               <h4 className="text-[#C5A059] text-[10px] uppercase tracking-[0.4em] font-bold mb-8">Studio</h4>
               <ul className="space-y-4">
                 {footerLinks.studio.map((link) => (
-                  <li key={link}>
-                    <Link to="#" className="text-gray-500 hover:text-black text-sm font-light transition-all duration-500 hover:pl-2">
-                      {link}
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-gray-500 hover:text-black text-sm font-light transition-all duration-500 hover:pl-2">
+                      {link.name}
                     </Link>
                   </li>
                 ))}

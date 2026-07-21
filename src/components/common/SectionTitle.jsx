@@ -42,7 +42,7 @@ const SectionTitle = ({ title, subtitle, align = "center", light = false }) => {
       className={`mb-20 ${isLeft ? "text-left" : "text-center"} max-w-4xl ${!isLeft && "mx-auto"}`}
     >
       {/* 1. TOP LABEL (Small & Elegant) */}
-      <motion.div variants={itemVariants} className="flex items-center gap-3 mb-4 justify-center lg:justify-start">
+      <motion.div variants={itemVariants} className={`flex items-center gap-3 mb-4 ${isLeft ? "justify-start" : "justify-center"}`}>
         <div className={`w-8 h-[1px] ${light ? "bg-white/30" : "bg-stone-300"}`} />
         <span className="text-[#C5A059] uppercase tracking-[0.4em] text-[10px] font-bold">
           Studio Perspective
@@ -53,7 +53,7 @@ const SectionTitle = ({ title, subtitle, align = "center", light = false }) => {
       <div className="overflow-hidden py-1">
         <motion.h2
           variants={itemVariants}
-          className={`text-5xl md:text-7xl font-serif leading-[1.1] tracking-tight ${
+          className={`text-4xl sm:text-5xl md:text-7xl font-serif leading-[1.1] tracking-tight ${
             light ? "text-white" : "text-stone-900"
           }`}
         >

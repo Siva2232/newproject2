@@ -160,7 +160,7 @@ const Services = () => {
       
       {/* SECTION 1: MAIN SERVICES GRID – may be empty in certain views */}
       {servicesToShow.length > 0 && (
-        <section className="relative py-32 overflow-hidden">
+        <section className="relative pt-32 pb-16 md:pt-44 md:pb-32 overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
             <motion.h2 
               style={{ y: textY }}
@@ -182,10 +182,10 @@ const Services = () => {
                   <div className="w-12 h-[1px] bg-gradient-to-r from-[#C5A059] to-transparent" />
                   <span className="text-[#C5A059] text-[10px] uppercase tracking-[0.5em] font-bold">Our Expertise</span>
                 </div>
-                <h2 className="text-5xl md:text-7xl font-serif text-white leading-[1.05] mb-6 tracking-tighter">
+                <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif text-white leading-[1.05] mb-6 tracking-tighter">
                 {view === "products" ? "Premium" : "Premium"} <span className="italic font-light opacity-95 text-[#C5A059]">{view === "products" ? "Products" : "Services"}</span>
                 </h2>
-                <p className="text-lg text-white/50 font-light max-w-md border-l border-[#C5A059]/30 pl-6">
+                <div className="text-base md:text-lg text-white/50 font-light max-w-md border-l border-[#C5A059]/30 pl-4 md:pl-6">
                   {(view === "products" || view === "combined") ? (
                     <ul className="list-disc list-inside space-y-2">
                       {productsData.map((p) => (
@@ -195,7 +195,7 @@ const Services = () => {
                   ) : (
                     "Where bespoke craftsmanship meets invisible technology."
                   )}
-                </p>
+                </div>
               </motion.div>
 
               <motion.div 
@@ -205,7 +205,7 @@ const Services = () => {
                 variants={{
                   visible: { transition: { staggerChildren: 0.15 } }
                 }}
-                className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mt-24"
+                className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12 mt-12 md:mt-24"
               >
                 {servicesToShow.map((service) => (
                   <motion.div
@@ -236,15 +236,15 @@ const Services = () => {
         </section>
       )}    
 
-      {/* SECTION 2: HOW WE WORK – unchanged */}
-      <section className="py-24 bg-[#001021] border-y border-[#C5A059]/10">
+      {/* SECTION 2: HOW WE WORK – gets navbar clearance when it's the first visible section */}
+      <section className={`pb-16 md:pb-24 ${servicesToShow.length > 0 ? "pt-16 md:pt-24" : "pt-32 md:pt-44"} bg-[#001021] border-y border-[#C5A059]/10`}>
         <Container>
-          <div className="mb-16">
+          <div className="mb-10 md:mb-16">
             <h3 className="text-[#C5A059] text-xs font-bold tracking-[0.6em] uppercase mb-4">How we work</h3>
-            <h2 className="text-4xl font-light">The Innovation <span className="italic font-serif text-[#C5A059]">Blueprint</span></h2>
+            <h2 className="text-3xl md:text-4xl font-light">The Innovation <span className="italic font-serif text-[#C5A059]">Blueprint</span></h2>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-8">
             {[
               { icon: <PenTool size={24}/>, title: "Consultation", desc: "Understanding your lifestyle and spatial requirements." },
               { icon: <Layers size={24}/>, title: "Engineering", desc: "Technical schematics and aesthetic material selection." },
@@ -267,14 +267,14 @@ const Services = () => {
       </section>
 
       {/* NEW SECTION: PREMIUM PRODUCTS – using EXACT same card UI as main services */}
-      <section className="py-32 relative bg-[#001021]/80 border-y border-[#C5A059]/10">
+      <section className="py-16 md:py-32 relative bg-[#001021]/80 border-y border-[#C5A059]/10">
         <Container>
-          <div className="mb-16 text-center">
+          <div className="mb-10 md:mb-16 text-center">
             <h3 className="text-[#C5A059] text-xs font-bold tracking-[0.6em] uppercase mb-4">Exclusive Offerings</h3>
-            <h2 className="text-4xl md:text-6xl font-serif text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif text-white">
               Premium <span className="italic font-light text-[#C5A059]">Products</span>
             </h2>
-            <p className="text-white/50 text-lg mt-6 max-w-2xl mx-auto font-light">
+            <p className="text-white/50 text-base md:text-lg mt-6 max-w-2xl mx-auto font-light">
               Signature pieces engineered for those who demand the extraordinary.
             </p>
           </div>
@@ -286,7 +286,7 @@ const Services = () => {
             variants={{
               visible: { transition: { staggerChildren: 0.15 } }
             }}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12"
           >
             {productsToShow.map((product) => (
               <motion.div
@@ -319,14 +319,14 @@ const Services = () => {
         </Container>
       </section>
 
-        <section className="relative py-32 overflow-hidden bg-[#0A1A2A]">
+        <section className="relative py-16 md:py-32 overflow-hidden bg-[#0A1A2A]">
   <Container>
     {/* Header */}
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      className="max-w-2xl mb-24"
+      className="max-w-2xl mb-12 md:mb-24"
     >
       <div className="flex items-center gap-4 mb-6">
         <div className="w-12 h-[1px] bg-gradient-to-r from-[#C5A059] to-transparent" />
@@ -334,7 +334,7 @@ const Services = () => {
           Smart Living
         </span>
       </div>
-      <h2 className="text-5xl md:text-7xl font-serif text-white leading-[1.05] tracking-tighter">
+      <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif text-white leading-[1.05] tracking-tighter">
         Automation Ecosystem
       </h2>
     </motion.div>
@@ -345,7 +345,7 @@ const Services = () => {
       whileInView="visible"
       viewport={{ once: true }}
       variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
-      className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+      className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8"
     >
       {SMART_LIVING_SOLUTIONS.map((service, idx) => (
         <motion.div
@@ -354,7 +354,7 @@ const Services = () => {
             hidden: { opacity: 0, y: 40 },
             visible: { opacity: 1, y: 0 }
           }}
-          className="group relative h-[500px] rounded-[20px] overflow-hidden border border-white/5"
+          className="group relative h-[400px] md:h-[500px] rounded-[20px] overflow-hidden border border-white/5"
         >
           {/* make the entire card clickable */}
           <Link to={`/smart-living/${idx}`} className="block h-full">
@@ -369,22 +369,22 @@ const Services = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A2A] via-[#0A1A2A]/40 to-transparent opacity-90" />
             
             {/* Content */}
-            <div className="absolute bottom-0 left-0 p-8 w-full">
-              <span className="text-[#C5A059] font-mono text-[10px] tracking-[0.3em] mb-4 block">
+            <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
+              <span className="text-[#C5A059] font-mono text-[10px] tracking-[0.3em] mb-3 md:mb-4 block">
                 {String(idx + 1).padStart(2, "0")}
               </span>
-              <h3 className="text-2xl font-serif text-white mb-4">
+              <h3 className="text-xl md:text-2xl font-serif text-white mb-3 md:mb-4">
                 {service.title}
               </h3>
               
-              {/* Hover Reveal Content */}
-              <div className="max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-500 ease-in-out">
+              {/* Always visible on touch screens, hover reveal on desktop */}
+              <div className="max-h-20 md:max-h-0 overflow-hidden md:group-hover:max-h-20 transition-all duration-500 ease-in-out">
                 <p className="text-white/60 text-sm font-light leading-relaxed">
                   Seamless integration of {service.title.toLowerCase()} tailored to your architectural aesthetic.
                 </p>
               </div>
               
-              <div className="w-12 h-[2px] bg-[#C5A059] mt-6" />
+              <div className="w-12 h-[2px] bg-[#C5A059] mt-4 md:mt-6" />
             </div>
           </Link>
         </motion.div>
@@ -394,7 +394,7 @@ const Services = () => {
 </section>
 
       {/* SECTION 4: LUXE CTA – unchanged */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-16 md:py-32 relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/30 to-transparent" />
         
         <Container>
@@ -402,20 +402,20 @@ const Services = () => {
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
-              className="p-16 rounded-[40px] bg-gradient-to-b from-[#003B75]/20 to-transparent border border-[#C5A059]/10 backdrop-blur-sm"
+              className="p-8 sm:p-12 md:p-16 rounded-3xl md:rounded-[40px] bg-gradient-to-b from-[#003B75]/20 to-transparent border border-[#C5A059]/10 backdrop-blur-sm"
             >
-              <h2 className="text-4xl md:text-6xl font-light mb-8 italic text-white">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-light mb-6 md:mb-8 italic text-white">
                 Ready to elevate your <br /> 
                 <span className="text-[#C5A059] not-italic font-sans font-bold uppercase tracking-tighter">Living Experience?</span>
               </h2>
-              <p className="text-white/50 text-lg mb-12 max-w-xl mx-auto">
+              <p className="text-white/50 text-base md:text-lg mb-8 md:mb-12 max-w-xl mx-auto">
                 Join our exclusive list of prestigious clients and transform your space into a masterpiece of tech and design.
               </p>
               
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-12 py-5 bg-[#C5A059] text-black font-bold uppercase text-xs tracking-[0.3em] rounded-full flex items-center gap-4 mx-auto hover:bg-white transition-all shadow-[0_10px_30px_rgba(197,160,89,0.2)]"
+                className="px-8 py-4 md:px-12 md:py-5 bg-[#C5A059] text-black font-bold uppercase text-xs tracking-[0.3em] rounded-full flex items-center gap-4 mx-auto hover:bg-white transition-all shadow-[0_10px_30px_rgba(197,160,89,0.2)]"
               >
                 Get a Proposal <ArrowRight size={16}/>
               </motion.button>
