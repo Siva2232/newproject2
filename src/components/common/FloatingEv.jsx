@@ -35,7 +35,7 @@ const FloatingEv = () => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
           transition={{ type: "spring", damping: 24, stiffness: 260 }}
-          className="fixed left-4 sm:left-6 bottom-6 sm:bottom-12 z-[200] flex flex-col items-center group"
+          className="fixed left-4 sm:left-6 bottom-6 sm:bottom-12 z-[90] flex flex-col items-center group"
         >
           <Link to="/ev-infra" className="relative block" aria-label="Explore EV charging infrastructure">
             {/* Pulse ring */}

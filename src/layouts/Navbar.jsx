@@ -47,7 +47,7 @@ const Navbar = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className={`
-            relative flex items-center justify-between px-6 md:px-10 pointer-events-auto
+            relative flex items-center justify-between gap-2 px-4 sm:px-6 md:px-10 pointer-events-auto
             transition-all duration-700 ease-in-out
             ${isOpen ? "opacity-0 pointer-events-none" : ""}
             ${scrolled 
@@ -56,15 +56,15 @@ const Navbar = () => {
           `}
         >
           {/* 1. LOGO */}
-          <Link to="/" className="group flex items-center gap-3 z-[110]">
+          <Link to="/" className="group flex items-center gap-2 sm:gap-3 z-[110] min-w-0">
             <motion.div 
               animate={{ scale: scrolled ? 0.85 : 1 }}
-              className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transition-transform duration-500"
+              className="relative w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 shrink-0 flex items-center justify-center transition-transform duration-500"
             >
               <img src={logo} alt="Home Tech Solutions" className="w-full h-full object-contain brightness-110" />
             </motion.div>
-            <div className="flex flex-col">
-              <h1 className="font-serif text-white text-base md:text-lg leading-none tracking-tighter uppercase">
+            <div className="flex flex-col min-w-0">
+              <h1 className="font-serif text-white text-sm sm:text-base md:text-lg leading-none tracking-tighter uppercase whitespace-nowrap">
                 Home Tech <span className="italic font-light opacity-60 text-[#C5A059]">Solutions</span>
               </h1>
               <span className="text-[8px] uppercase tracking-[0.3em] text-[#C5A059] font-bold mt-1">
@@ -91,18 +91,16 @@ const Navbar = () => {
           </ul>
 
           {/* 3. MENU ACTION BUTTONS */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0">
              <button 
               type="button"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
               onClick={(e) => {
                 e.stopPropagation();
                 setIsOpen(!isOpen);
               }}
-              className="relative z-[120] flex items-center gap-3 px-3 py-2 rounded-full lg:hidden group transition-all"
+              className="relative z-[120] flex items-center px-2 py-2 rounded-full lg:hidden group transition-all"
             >
-              <span className={`text-[9px] font-bold uppercase tracking-widest transition-opacity duration-300 ${isOpen ? "text-white opacity-100" : "text-white/40 opacity-0"}`}>
-                Close
-              </span>
               <div className="w-8 h-8 flex flex-col items-center justify-center gap-1.5">
                 <motion.span 
                   animate={isOpen ? { rotate: 45, y: 7.5, backgroundColor: "#ffffff" } : { rotate: 0, y: 0, backgroundColor: "#ffffff" }}
@@ -160,26 +158,27 @@ const Navbar = () => {
         </motion.button>
       </div>
 
-      {/* Nav Links */}
-      <div className="h-full flex flex-col justify-center px-6 gap-5 relative z-10 mt-2">
+      {/* Nav Links — scrollable so all 7 links + contact fit on short screens */}
+      <div className="h-full overflow-y-auto relative z-10">
+        <div className="min-h-full flex flex-col justify-center px-6 gap-3.5 sm:gap-5 pt-20 pb-10">
         {navLinks.map((link, i) => (
           <motion.div
             key={link.name}
             initial={{ x: -30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.1 * i + 0.3 }}
+            transition={{ delay: 0.07 * i + 0.25 }}
           >
             <Link
               to={link.path}
               className="group relative inline-block"
               onClick={() => setIsOpen(false)}
             >
-              <span className="text-[9px] text-[#C5A059] font-mono mb-1 block">
+              <span className="text-[9px] text-[#C5A059] font-mono mb-0.5 block">
                 {link.id}
               </span>
 
               <h2
-                className={`text-3xl font-serif tracking-tight transition-all ${
+                className={`text-2xl sm:text-3xl font-serif tracking-tight transition-all ${
                   location.pathname === link.path
                     ? "text-[#C5A059] italic pl-3"
                     : "text-white/40 group-hover:text-white"
@@ -195,15 +194,15 @@ const Navbar = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="mt-6 pt-6 border-t border-white/10"
+          className="mt-4 sm:mt-6 pt-5 sm:pt-6 border-t border-white/10"
         >
           <div className="flex flex-col gap-4">
             <div>
               <p className="text-[9px] tracking-[0.4em] text-white/20 uppercase mb-2">
                 Get in touch
               </p>
-              <p className="text-[#C5A059] text-sm font-light">
-                hello@hometech.com
+              <p className="text-[#C5A059] text-sm font-light break-all">
+                hometechalapy@gmail.com
               </p>
             </div>
 
@@ -250,6 +249,7 @@ const Navbar = () => {
             </div>
           </div>
         </motion.div>
+        </div>
       </div>
     </motion.div>
   )}

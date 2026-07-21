@@ -39,7 +39,7 @@ const FloatingContact = ({
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 100 }}
           transition={{ type: "spring", damping: 24, stiffness: 260 }}
-          className="fixed right-4 sm:right-6 bottom-6 sm:bottom-12 z-[200] flex flex-col items-center gap-0 group"
+          className="fixed right-4 sm:right-6 bottom-6 sm:bottom-12 z-[90] flex flex-col items-center gap-0 group"
         >
       {/* The "Pillar" Container */}
       <div className="bg-black/40 backdrop-blur-md border border-white/10 rounded-full p-1.5 flex flex-col gap-2 shadow-2xl">
@@ -107,7 +107,7 @@ const FloatingContact = ({
             shadow-lg
             whitespace-nowrap
           ">
-            Get Free Consultation Call Now
+            Book Free Consultation
           </span>
         </a>
       </div>
